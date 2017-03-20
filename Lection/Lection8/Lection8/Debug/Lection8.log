@@ -1,0 +1,6 @@
+﻿  Lection8.cpp
+q:\courses\lectprog\lection8\lection8\lection8.cpp(546): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+q:\courses\lectprog\lection8\lection8\lection8.cpp(824): warning C4822: 'main::Q::func': local class member function does not have a body
+q:\courses\lectprog\lection8\lection8\lection8.cpp(832): warning C4101: 'objT': unreferenced local variable
+  Lection8.vcxproj -> Q:\courses\Lectprog\Lection8\Debug\Lection8.exe

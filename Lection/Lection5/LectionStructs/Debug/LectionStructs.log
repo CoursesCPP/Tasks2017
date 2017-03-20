@@ -1,0 +1,4 @@
+﻿  LectionStructs.cpp
+d:\courses\lectprog\lection5\lectionstructs\lectionstructs.cpp(450): warning C4101: 'k': unreferenced local variable
+d:\courses\lectprog\lection5\lectionstructs\lectionstructs.cpp(450): warning C4101: 'j': unreferenced local variable
+  LectionStructs.vcxproj -> D:\courses\Lectprog\Lection5\Debug\LectionStructs.exe

@@ -1,0 +1,3 @@
+﻿  Lection8.cpp
+q:\courses\lectprog\lection9\lection8\lection8.cpp(52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Lection8.vcxproj -> Q:\courses\Lectprog\Lection9\x64\Debug\Lection8.exe

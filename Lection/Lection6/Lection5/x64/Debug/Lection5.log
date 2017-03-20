@@ -1,0 +1,11 @@
+﻿Сборка начата 21.06.2016 18:15:32.
+     1>Проект "F:\courses\Lectprog\Lection6\Lection5\Lection5.vcxproj" в узле 2 (целевые объекты Build).
+     1>Link:
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\courses\Lectprog\Lection6\x64\Debug\Lection5.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\courses\Lectprog\Lection6\x64\Debug\Lection5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\courses\Lectprog\Lection6\x64\Debug\Lection5.lib" /MACHINE:X64 x64\Debug\Lection5.obj
+         x64\Debug\stdafx.obj
+         Lection5.vcxproj -> F:\courses\Lectprog\Lection6\x64\Debug\Lection5.exe
+     1>Сборка проекта "F:\courses\Lectprog\Lection6\Lection5\Lection5.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:03.38

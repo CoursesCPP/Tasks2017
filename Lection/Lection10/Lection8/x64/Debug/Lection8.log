@@ -1,0 +1,10 @@
+﻿  Lection8.cpp
+q:\courses\lectprog\lection10\lection8\verylong.h(27): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+q:\courses\lectprog\lection10\lection8\verylong.h(26): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+q:\courses\lectprog\lection10\lection8\verylong.h(33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+q:\courses\lectprog\lection10\lection8\verylong.h(31): warning C4996: 'ltoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _ltoa. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(1323): note: see declaration of 'ltoa'
+q:\courses\lectprog\lection10\lection8\verylong.h(32): warning C4996: 'strrev': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _strrev. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(593): note: see declaration of 'strrev'
+  Lection8.vcxproj -> Q:\courses\Lectprog\Lection10\x64\Debug\Lection8.exe

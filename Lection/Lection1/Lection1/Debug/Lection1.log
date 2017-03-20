@@ -1,0 +1,4 @@
+﻿  Lection1.cpp
+d:\courses\lectprog\lection1\lection1\lection1.cpp(184): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+d:\courses\lectprog\lection1\lection1\lection1.cpp(185): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Lection1.vcxproj -> D:\courses\Lectprog\Lection1\Debug\Lection1.exe
