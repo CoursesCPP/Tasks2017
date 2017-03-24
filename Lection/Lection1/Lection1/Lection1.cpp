@@ -1,10 +1,10 @@
-// Lection1.cpp : Defines the entry point for the console application.
+п»ї// Lection1.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
-#include <iostream>// потоки ввода-вывода
-#include <iomanip> // библиотека манипулирования вводом/выводом
-#include <cmath>   // заголовочный файл математических функций
+#include <iostream>// РїРѕС‚РѕРєРё РІРІРѕРґР°-РІС‹РІРѕРґР°
+#include <iomanip> // Р±РёР±Р»РёРѕС‚РµРєР° РјР°РЅРёРїСѓР»РёСЂРѕРІР°РЅРёСЏ РІРІРѕРґРѕРј/РІС‹РІРѕРґРѕРј
+#include <cmath>   // Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёС… С„СѓРЅРєС†РёР№
 #include <climits>   
 #define ZERO 0   
 
@@ -16,28 +16,28 @@ int main()
 
 	#pragma region Char
 	/*
-	char symbol = 'a'; // объявление переменной типа char и инициализация её символом 'a'
-	cout << "В переменной symbol лежит " << symbol << endl; // печать символа, 
-										//содержащегося в переменной symbol
-	char string[] = "строка"; // объявление символьного массива (строки)
-	cout << "string = " << string << endl; // печать строки
-	cout << "Первый симол string = " << string[0] << endl;
+	char symbol = 'a'; // РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ С‚РёРїР° char Рё РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РµС‘ СЃРёРјРІРѕР»РѕРј 'a'
+	cout << "Р’ РїРµСЂРµРјРµРЅРЅРѕР№ symbol Р»РµР¶РёС‚ " << symbol << endl; // РїРµС‡Р°С‚СЊ СЃРёРјРІРѕР»Р°, 
+										//СЃРѕРґРµСЂР¶Р°С‰РµРіРѕСЃСЏ РІ РїРµСЂРµРјРµРЅРЅРѕР№ symbol
+	char string[] = "СЃС‚СЂРѕРєР°"; // РѕР±СЉСЏРІР»РµРЅРёРµ СЃРёРјРІРѕР»СЊРЅРѕРіРѕ РјР°СЃСЃРёРІР° (СЃС‚СЂРѕРєРё)
+	cout << "string = " << string << endl; // РїРµС‡Р°С‚СЊ СЃС‚СЂРѕРєРё
+	cout << "РџРµСЂРІС‹Р№ СЃРёРјРѕР» string = " << string[0] << endl;
 	*/
 	#pragma endregion
 	
 	#pragma region Bool
 	
-	bool boolean = true; //false // переменная типа bool с именем boolean
+	bool boolean = true; //false // РїРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° bool СЃ РёРјРµРЅРµРј boolean
 
 	cout << sizeof(bool);
-	/*if (boolean) // условие оператора if
-		cout << "true = " << boolean << endl; // выполнится в случае истинности условия
+	/*if (boolean) // СѓСЃР»РѕРІРёРµ РѕРїРµСЂР°С‚РѕСЂР° if
+		cout << "true = " << boolean << endl; // РІС‹РїРѕР»РЅРёС‚СЃСЏ РІ СЃР»СѓС‡Р°Рµ РёСЃС‚РёРЅРЅРѕСЃС‚Рё СѓСЃР»РѕРІРёСЏ
 	else
-		cout << "false = " << boolean << endl; // выполнится в случае, если условие ложно
+		cout << "false = " << boolean << endl; // РІС‹РїРѕР»РЅРёС‚СЃСЏ РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё СѓСЃР»РѕРІРёРµ Р»РѕР¶РЅРѕ
 	*/
 	#pragma endregion
 
-	#pragma region Числовые типы
+	#pragma region Р§РёСЃР»РѕРІС‹Рµ С‚РёРїС‹
 	/*
 	int n_int = INT_MAX;        
 	short n_short = SHRT_MAX;   
@@ -67,33 +67,33 @@ int main()
 	*/
  	#pragma endregion
 	
-	#pragma region Литералы
+	#pragma region Р›РёС‚РµСЂР°Р»С‹
 	/*
 	3.14 - double
 	3.14F - float
-	100u или 100U - unsingned int
-	122l или 122L - long
-	1024UL или 1024LU или 1024Lu - unsingned long
+	100u РёР»Рё 100U - unsingned int
+	122l РёР»Рё 122L - long
+	1024UL РёР»Рё 1024LU РёР»Рё 1024Lu - unsingned long
 
-	Виды: 20, 024, 0x14
+	Р’РёРґС‹: 20, 024, 0x14
 
-	Символьные литералы - 'a' '2' ',' ' '
+	РЎРёРјРІРѕР»СЊРЅС‹Рµ Р»РёС‚РµСЂР°Р»С‹ - 'a' '2' ',' ' '
 	
-	Специальные символы:
-		\n (\14) - новая строка
-		\t - табуляция
-		\r - возврат каретки(enter)
-		\a - сигнал
-		\b - подчеркивание 
+	РЎРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹:
+		\n (\14) - РЅРѕРІР°СЏ СЃС‚СЂРѕРєР°
+		\t - С‚Р°Р±СѓР»СЏС†РёСЏ
+		\r - РІРѕР·РІСЂР°С‚ РєР°СЂРµС‚РєРё(enter)
+		\a - СЃРёРіРЅР°Р»
+		\b - РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ 
 		\062 - '2'				
-    Строковый литерал:
-	"\n CC \t options \t file.[cC] \n" - последний элемент \0
+    РЎС‚СЂРѕРєРѕРІС‹Р№ Р»РёС‚РµСЂР°Р»:
+	"\n CC \t options \t file.[cC] \n" - РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ \0
 	'A' "A"
 
 	wchar_t - L"some string"
 	*/
 	
-	//Упражнение
+	//РЈРїСЂР°Р¶РЅРµРЅРёРµ
 
 	//'a', L'a', "a", L"a";
 
@@ -104,7 +104,7 @@ int main()
 	//1024F, 3.14UL;
 	#pragma endregion
 	
-	#pragma region Переполнение 1
+	#pragma region РџРµСЂРµРїРѕР»РЅРµРЅРёРµ 1
 	/*
 		short sam = SHRT_MAX;     
 		unsigned short sue = sam;
@@ -128,17 +128,17 @@ int main()
 	*/	
 	#pragma endregion
 
-	#pragma region Переполнение 2
+	#pragma region РџРµСЂРµРїРѕР»РЅРµРЅРёРµ 2
 		/*
 		char byte_value = 32;
 		int ival = 8;
 		cout << sizeof(char) << endl;
-		byte_value = ival * byte_value; //256 - 9 бит
+		byte_value = ival * byte_value; //256 - 9 Р±РёС‚
 		cout << "byte_value: " << static_cast<int>(byte_value) << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Отображение 8,16ричных чисел
+	#pragma region РћС‚РѕР±СЂР°Р¶РµРЅРёРµ 8,16СЂРёС‡РЅС‹С… С‡РёСЃРµР»
 		/*
 		int val_10 = 42;
 		int val_16 = 42;
@@ -152,7 +152,7 @@ int main()
 		*/
 	#pragma endregion
 
-	#pragma region Char и Int - ASCII
+	#pragma region Char Рё Int - ASCII
 	/*
 	char ch = 'M';       
 	int i = ch;          
@@ -168,7 +168,7 @@ int main()
 	*/
 #pragma endregion
 
-	#pragma region Управляющие (escape) последовательности
+	#pragma region РЈРїСЂР°РІР»СЏСЋС‰РёРµ (escape) РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё
 	/*
 	cout << "\aOperation \"HyperHype\" is now activated!\n";
 	cout << "Enter your agent code:________\b\b\b\b\b\b\b\b";
@@ -179,12 +179,12 @@ int main()
 	*/
 	#pragma endregion
 
-	#pragma region Изменение типа при инициализации
+	#pragma region РР·РјРµРЅРµРЅРёРµ С‚РёРїР° РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
 	/*
 	cout.setf(ios_base::fixed, ios_base::floatfield);
 	float tree = 3;     // int to float
 	int guess = 3.9832; // double to int
-	int debt = 7.2E12;  // не определено в C++
+	int debt = 7.2E12;  // РЅРµ РѕРїСЂРµРґРµР»РµРЅРѕ РІ C++
 	cout << "tree = " << tree << endl;
 	cout << "guess = " << guess << endl;
 	cout << "debt = " << debt << endl;

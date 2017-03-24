@@ -1,4 +1,4 @@
-// Lection3.cpp : Defines the entry point for the console application.
+п»ї// Lection3.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -10,33 +10,33 @@
 
 using namespace std;
 
-void faсtorial(int numb) //заголовок функции
+void faСЃtorial(int numb) //Р·Р°РіРѕР»РѕРІРѕРє С„СѓРЅРєС†РёРё
 {
-	int rezult = 1;  //инициализируем переменную rezult значением 1
-	for (int i = 1; i <= numb; i++) //цикл вычисления значения n!
-		rezult *= i; //накапливаем произведение в переменной rezult
-	cout << numb << "! = " << rezult << endl; //печать значения n!
+	int rezult = 1;  //РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ rezult Р·РЅР°С‡РµРЅРёРµРј 1
+	for (int i = 1; i <= numb; i++) //С†РёРєР» РІС‹С‡РёСЃР»РµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ n!
+		rezult *= i; //РЅР°РєР°РїР»РёРІР°РµРј РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІ РїРµСЂРµРјРµРЅРЅРѕР№ rezult
+	cout << numb << "! = " << rezult << endl; //РїРµС‡Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ n!
 }
 
-int faсtorialint(int numb)// заголовок функции
+int faСЃtorialint(int numb)// Р·Р°РіРѕР»РѕРІРѕРє С„СѓРЅРєС†РёРё
 {
-	int rezult = 1; // инициализируем переменную rezult значением 1
-	for (int i = 1; i <= numb; i++) // цикл вычисления значения n!
-		rezult *= i; // накапливаем произведение в переменной rezult
-	return rezult; // передаём значение факториала в главную функцию
+	int rezult = 1; // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ rezult Р·РЅР°С‡РµРЅРёРµРј 1
+	for (int i = 1; i <= numb; i++) // С†РёРєР» РІС‹С‡РёСЃР»РµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ n!
+		rezult *= i; // РЅР°РєР°РїР»РёРІР°РµРј РїСЂРѕРёР·РІРµРґРµРЅРёРµ РІ РїРµСЂРµРјРµРЅРЅРѕР№ rezult
+	return rezult; // РїРµСЂРµРґР°С‘Рј Р·РЅР°С‡РµРЅРёРµ С„Р°РєС‚РѕСЂРёР°Р»Р° РІ РіР»Р°РІРЅСѓСЋ С„СѓРЅРєС†РёСЋ
 }
 
-bool palendrom5(int); //прототип функции нахождения палиндрома пятизначных чисел
+bool palendrom5(int); //РїСЂРѕС‚РѕС‚РёРї С„СѓРЅРєС†РёРё РЅР°С…РѕР¶РґРµРЅРёСЏ РїР°Р»РёРЅРґСЂРѕРјР° РїСЏС‚РёР·РЅР°С‡РЅС‹С… С‡РёСЃРµР»
 
 void check_pass(string password)
 {
 	string valid_pass = "q1w2e3";
 
 	if (password == valid_pass) {
-		cout << "Доступ разрешен." << endl;
+		cout << "Р”РѕСЃС‚СѓРї СЂР°Р·СЂРµС€РµРЅ." << endl;
 	}
 	else {
-		cout << "Неверный пароль!" << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ!" << endl;
 	}
 }
 
@@ -45,16 +45,16 @@ string check_pass_str(string password)
 	string valid_pass = "qwerty123";
 	string error_message;
 	if (password == valid_pass) {
-		error_message = "Доступ разрешен.";
+		error_message = "Р”РѕСЃС‚СѓРї СЂР°Р·СЂРµС€РµРЅ.";
 	}
 	else {
-		error_message = "Неверный пароль!";
+		error_message = "РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ!";
 	}
 	return error_message;
 }
 
 
-#pragma region Пароль рекурсия
+#pragma region РџР°СЂРѕР»СЊ СЂРµРєСѓСЂСЃРёСЏ
 
 bool password_is_valid(string password)
 {
@@ -68,35 +68,35 @@ bool password_is_valid(string password)
 void get_pass()
 {
 	string user_pass;
-	cout << "Введите пароль: ";
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ";
 	getline(cin, user_pass);
 	if (!password_is_valid(user_pass)) {
-		cout << "Неверный пароль!" << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ!" << endl;
 		system("cls");
-		get_pass(); // Здесь делаем рекурсию
+		get_pass(); // Р—РґРµСЃСЊ РґРµР»Р°РµРј СЂРµРєСѓСЂСЃРёСЋ
 	}
 	else {
-		cout << "Доступ разрешен." << endl;
+		cout << "Р”РѕСЃС‚СѓРї СЂР°Р·СЂРµС€РµРЅ." << endl;
 	}
 }
 
 #pragma endregion
 
-#pragma region Inline функции
+#pragma region Inline С„СѓРЅРєС†РёРё
 	inline void hello()
 	{
 		cout << "hello\n";
 	}
 #pragma endregion
 
-double triangle_area(const double a = 5, const double b = 6.5, const double c = 10.7); //параметры функции инициализированы по умолчанию
+double triangle_area(const double a = 5, const double b = 6.5, const double c = 10.7); //РїР°СЂР°РјРµС‚СЂС‹ С„СѓРЅРєС†РёРё РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅС‹ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 
-#pragma region Расчет площади треугольника по умолчанию
-double triangle_area(const double a, const double b, const double c) // функция вычисления площади треугольника по формуле Герона
+#pragma region Р Р°СЃС‡РµС‚ РїР»РѕС‰Р°РґРё С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+double triangle_area(const double a, const double b, const double c) // С„СѓРЅРєС†РёСЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РїР»РѕС‰Р°РґРё С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РїРѕ С„РѕСЂРјСѓР»Рµ Р“РµСЂРѕРЅР°
 {
-	const double p = (a + b + c) / 2;   // полупериметр
+	const double p = (a + b + c) / 2;   // РїРѕР»СѓРїРµСЂРёРјРµС‚СЂ
 	cout << "a = " << a << "\nb = " << b << "\nc = " << c << endl;
-	return (sqrt(p * (p - a) * (p - b) * (p - c))); // формула Герона для нахождения площади треугольника
+	return (sqrt(p * (p - a) * (p - b) * (p - c))); // С„РѕСЂРјСѓР»Р° Р“РµСЂРѕРЅР° РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РїР»РѕС‰Р°РґРё С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 }
 #pragma endregion
 
@@ -111,103 +111,103 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-#pragma region Логические операции
+#pragma region Р›РѕРіРёС‡РµСЃРєРёРµ РѕРїРµСЂР°С†РёРё
 	/*
-	bool a1 = true, a2 = false; // объявление логических переменных
+	bool a1 = true, a2 = false; // РѕР±СЉСЏРІР»РµРЅРёРµ Р»РѕРіРёС‡РµСЃРєРёС… РїРµСЂРµРјРµРЅРЅС‹С…
 	bool a3 = true, a4 = false;
-	cout << "Таблица истинности &&" << endl;
-	cout << "true  && false: " << (a1 && a2) << endl // логическое И
+	cout << "РўР°Р±Р»РёС†Р° РёСЃС‚РёРЅРЅРѕСЃС‚Рё &&" << endl;
+	cout << "true  && false: " << (a1 && a2) << endl // Р»РѕРіРёС‡РµСЃРєРѕРµ Р
 		 << "false && true: " << (a2 && a1) << endl
 		 << "true  && true: " << (a1 && a3) << endl
 		 << "false && false: " << (a2 && a4) << endl;
-	cout << "Таблица истинности ||" << endl;
-	cout << "true  || false: " << (a1 || a2) << endl // логическое ИЛИ
+	cout << "РўР°Р±Р»РёС†Р° РёСЃС‚РёРЅРЅРѕСЃС‚Рё ||" << endl;
+	cout << "true  || false: " << (a1 || a2) << endl // Р»РѕРіРёС‡РµСЃРєРѕРµ РР›Р
 		 << "false || true: " << (a2 || a1) << endl
 		 << "true  || true: " << (a1 || a3) << endl
 		 << "false || false: " << (a2 || a4) << endl;
-	cout << "Таблица истинности !" << endl;
-	cout << "!true: " << (!a1) << endl // логическое НЕ
+	cout << "РўР°Р±Р»РёС†Р° РёСЃС‚РёРЅРЅРѕСЃС‚Рё !" << endl;
+	cout << "!true: " << (!a1) << endl // Р»РѕРіРёС‡РµСЃРєРѕРµ РќР•
 		 << "!false: " << (!a2) << endl;
 	*/
 #pragma endregion
 
-#pragma region Факториал
+#pragma region Р¤Р°РєС‚РѕСЂРёР°Р»
 	/*
-	int digit; //переменная для хранения значения n!
-	cout << "Введите число: ";
+	int digit; //РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ n!
+	cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
 	cin >> digit;
-	faсtorial(digit); //вызов функции нахождения факториала
+	faСЃtorial(digit); //РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё РЅР°С…РѕР¶РґРµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
 	*/
 #pragma endregion
 
-#pragma region Факториал инт
+#pragma region Р¤Р°РєС‚РѕСЂРёР°Р» РёРЅС‚
 	/*
-	int digit; // переменная для хранения значения n!
-	cout << "Введите число: ";
+	int digit; // РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ n!
+	cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
 	cin >> digit;
-	cout << digit << "! = " << faсtorialint(digit) << endl;// запуск функции нахождения факториала
+	cout << digit << "! = " << faСЃtorialint(digit) << endl;// Р·Р°РїСѓСЃРє С„СѓРЅРєС†РёРё РЅР°С…РѕР¶РґРµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
 	*/
 #pragma endregion
 
-#pragma region Палиндром 
+#pragma region РџР°Р»РёРЅРґСЂРѕРј 
 	/*
-	cout << "Введите 5-ти значное число: "; // введите пятизначное число
-	int in_number, out_number; // переменные для хранения введённого пятизначного числа
+	cout << "Р’РІРµРґРёС‚Рµ 5-С‚Рё Р·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ: "; // РІРІРµРґРёС‚Рµ РїСЏС‚РёР·РЅР°С‡РЅРѕРµ С‡РёСЃР»Рѕ
+	int in_number, out_number; // РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІРІРµРґС‘РЅРЅРѕРіРѕ РїСЏС‚РёР·РЅР°С‡РЅРѕРіРѕ С‡РёСЃР»Р°
 	cin >> in_number;
-	out_number = in_number; // в переменную out_number сохраняем введённое число
+	out_number = in_number; // РІ РїРµСЂРµРјРµРЅРЅСѓСЋ out_number СЃРѕС…СЂР°РЅСЏРµРј РІРІРµРґС‘РЅРЅРѕРµ С‡РёСЃР»Рѕ
 
-	if (palendrom5(in_number)) // если функция вернёт true, то условие истинно, иначе функция вернёт false - ложно
-		cout << "Число " << out_number << " - палиндром" << endl;
+	if (palendrom5(in_number)) // РµСЃР»Рё С„СѓРЅРєС†РёСЏ РІРµСЂРЅС‘С‚ true, С‚Рѕ СѓСЃР»РѕРІРёРµ РёСЃС‚РёРЅРЅРѕ, РёРЅР°С‡Рµ С„СѓРЅРєС†РёСЏ РІРµСЂРЅС‘С‚ false - Р»РѕР¶РЅРѕ
+		cout << "Р§РёСЃР»Рѕ " << out_number << " - РїР°Р»РёРЅРґСЂРѕРј" << endl;
 	else
-		cout << "Это число не палиндром" << endl;
+		cout << "Р­С‚Рѕ С‡РёСЃР»Рѕ РЅРµ РїР°Р»РёРЅРґСЂРѕРј" << endl;
 	*/
 #pragma endregion
 
-#pragma region Пароль не функция
+#pragma region РџР°СЂРѕР»СЊ РЅРµ С„СѓРЅРєС†РёСЏ
 	/*
 	string valid_pass = "q1w2e3";
 	string user_pass;
-	cout << "Введите пароль: ";
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ";
 	getline(cin, user_pass);
 	if (user_pass == valid_pass) {
-		cout << "Доступ разрешен." << endl;
+		cout << "Р”РѕСЃС‚СѓРї СЂР°Р·СЂРµС€РµРЅ." << endl;
 	}
 	else {
-		cout << "Неверный пароль!" << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ!" << endl;
 	}
 	*/
 #pragma endregion
 
-#pragma region Пароль функция
+#pragma region РџР°СЂРѕР»СЊ С„СѓРЅРєС†РёСЏ
 	/*
 	string user_pass;
-	cout << "Введите пароль: ";
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ";
 	getline(cin, user_pass);
 	check_pass(user_pass);
 	*/
 #pragma endregion
 
-#pragma region Пароль строка
+#pragma region РџР°СЂРѕР»СЊ СЃС‚СЂРѕРєР°
 	/*
 	string user_pass;
-	cout << "Введите пароль: ";
+	cout << "Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: ";
 	getline(cin, user_pass);
 	string error_msg = check_pass_str(user_pass);
 	cout << error_msg << endl;
 	*/
 #pragma endregion
 
-#pragma region Пароль рекурсия
+#pragma region РџР°СЂРѕР»СЊ СЂРµРєСѓСЂСЃРёСЏ
 	/*
 	get_pass();
 	*/
 #pragma endregion
 
-#pragma region Расчет площади треугольника по умолчанию
+#pragma region Р Р°СЃС‡РµС‚ РїР»РѕС‰Р°РґРё С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
 	
-	cout << "S = " << triangle_area() << endl << endl; // все параметры используются по умолчанию
-	cout << "S = " << triangle_area(10, 5) << endl << endl; // только последний параметр используется по умолчанию
-	cout << "S = " << triangle_area(7) << endl << endl; // два последних параметра берутся по умолчанию, а первый равен 7
+	cout << "S = " << triangle_area() << endl << endl; // РІСЃРµ РїР°СЂР°РјРµС‚СЂС‹ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	cout << "S = " << triangle_area(10, 5) << endl << endl; // С‚РѕР»СЊРєРѕ РїРѕСЃР»РµРґРЅРёР№ РїР°СЂР°РјРµС‚СЂ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	cout << "S = " << triangle_area(7) << endl << endl; // РґРІР° РїРѕСЃР»РµРґРЅРёС… РїР°СЂР°РјРµС‚СЂР° Р±РµСЂСѓС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, Р° РїРµСЂРІС‹Р№ СЂР°РІРµРЅ 7
 	
 #pragma endregion
 
@@ -221,25 +221,25 @@ int main()
     return 0;
 }
 
-#pragma region Палиндром-ф
+#pragma region РџР°Р»РёРЅРґСЂРѕРј-С„
 
-bool palendrom5(int number) // функция нахождения палиндрома пятизначных чисел
+bool palendrom5(int number) // С„СѓРЅРєС†РёСЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РїР°Р»РёРЅРґСЂРѕРјР° РїСЏС‚РёР·РЅР°С‡РЅС‹С… С‡РёСЃРµР»
 {
-	int balance1, balance2, balance4, balance5; // переменные хранящие промежуточные результаты
-	balance1 = number % 10; // переменной balance1 присвоили первый разряд пятизначного числа
-	number = number / 10;   // уменьшаем введённое число на один разряд
+	int balance1, balance2, balance4, balance5; // РїРµСЂРµРјРµРЅРЅС‹Рµ С…СЂР°РЅСЏС‰РёРµ РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹Рµ СЂРµР·СѓР»СЊС‚Р°С‚С‹
+	balance1 = number % 10; // РїРµСЂРµРјРµРЅРЅРѕР№ balance1 РїСЂРёСЃРІРѕРёР»Рё РїРµСЂРІС‹Р№ СЂР°Р·СЂСЏРґ РїСЏС‚РёР·РЅР°С‡РЅРѕРіРѕ С‡РёСЃР»Р°
+	number = number / 10;   // СѓРјРµРЅСЊС€Р°РµРј РІРІРµРґС‘РЅРЅРѕРµ С‡РёСЃР»Рѕ РЅР° РѕРґРёРЅ СЂР°Р·СЂСЏРґ
 
-	balance2 = number % 10; // переменной balance2 присвоили второй разряд
-	number = number / 100;  // уменьшаем введённое число на два разряда
+	balance2 = number % 10; // РїРµСЂРµРјРµРЅРЅРѕР№ balance2 РїСЂРёСЃРІРѕРёР»Рё РІС‚РѕСЂРѕР№ СЂР°Р·СЂСЏРґ
+	number = number / 100;  // СѓРјРµРЅСЊС€Р°РµРј РІРІРµРґС‘РЅРЅРѕРµ С‡РёСЃР»Рѕ РЅР° РґРІР° СЂР°Р·СЂСЏРґР°
 
-	balance4 = number % 10; // переменной balance4 присвоили четвёртый разряд
-	number = number / 10;   // уменьшаем введённое число на один разряд
+	balance4 = number % 10; // РїРµСЂРµРјРµРЅРЅРѕР№ balance4 РїСЂРёСЃРІРѕРёР»Рё С‡РµС‚РІС‘СЂС‚С‹Р№ СЂР°Р·СЂСЏРґ
+	number = number / 10;   // СѓРјРµРЅСЊС€Р°РµРј РІРІРµРґС‘РЅРЅРѕРµ С‡РёСЃР»Рѕ РЅР° РѕРґРёРЅ СЂР°Р·СЂСЏРґ
 
-	balance5 = number % 10; // переменной balance5 присвоили пятый разряд
+	balance5 = number % 10; // РїРµСЂРµРјРµРЅРЅРѕР№ balance5 РїСЂРёСЃРІРѕРёР»Рё РїСЏС‚С‹Р№ СЂР°Р·СЂСЏРґ
 	if ((balance1 == balance5) && (balance2 == balance4))
-		return true;  // функция возвращает истинное значение
+		return true;  // С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РёСЃС‚РёРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 	else
-		return false; // функция возвращает ложное значение
+		return false; // С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ Р»РѕР¶РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 }
 
 #pragma endregion

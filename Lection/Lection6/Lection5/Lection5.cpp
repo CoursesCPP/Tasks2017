@@ -1,4 +1,4 @@
-// Lection5.cpp : Defines the entry point for the console application.
+п»ї// Lection5.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -8,56 +8,56 @@
 
 using namespace std;
 
-class Smallobj               // определение класса
+class Smallobj               // РѕРїСЂРµРґРµР»РµРЅРёРµ РєР»Р°СЃСЃР°
 {
 private:
-	int somedata;            // поле класса
+	int somedata;            // РїРѕР»Рµ РєР»Р°СЃСЃР°
 public:
-	void setdata(int d)      // метод класса, изменяющий значение поля
+	void setdata(int d)      // РјРµС‚РѕРґ РєР»Р°СЃСЃР°, РёР·РјРµРЅСЏСЋС‰РёР№ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ
 	{
 		somedata = d;
 	}
-	void getdata()          // метод класса, отображающий значение поля
+	void getdata()          // РјРµС‚РѕРґ РєР»Р°СЃСЃР°, РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ
 	{
-		cout << "Значение поля равно " << somedata << endl;
+		cout << "Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ СЂР°РІРЅРѕ " << somedata << endl;
 	}
 };
 
-class Part                  // определение класса
+class Part                  // РѕРїСЂРµРґРµР»РµРЅРёРµ РєР»Р°СЃСЃР°
 {
 private:
-	int modelnumber;           // номер изделия
-	int partnumber;            // номер детали
-	float cost;                // стоимость детали
+	int modelnumber;           // РЅРѕРјРµСЂ РёР·РґРµР»РёСЏ
+	int partnumber;            // РЅРѕРјРµСЂ РґРµС‚Р°Р»Рё
+	float cost;                // СЃС‚РѕРёРјРѕСЃС‚СЊ РґРµС‚Р°Р»Рё
 public:
-	// установка данных
+	// СѓСЃС‚Р°РЅРѕРІРєР° РґР°РЅРЅС‹С…
 	void setpart(int mn, int pn, float c)
 	{
 		modelnumber = mn;
 		partnumber = pn;
 		cost = c;
 	}
-	void showpart()          // вывод данных
+	void showpart()          // РІС‹РІРѕРґ РґР°РЅРЅС‹С…
 	{
-		cout << "Модель " << modelnumber;
-		cout << ", деталь " << partnumber;
-		cout << ", стоимость $" << cost << endl;
+		cout << "РњРѕРґРµР»СЊ " << modelnumber;
+		cout << ", РґРµС‚Р°Р»СЊ " << partnumber;
+		cout << ", СЃС‚РѕРёРјРѕСЃС‚СЊ $" << cost << endl;
 	}
 };
 
-class Circle                 //графический объект "круг"
+class Circle                 //РіСЂР°С„РёС‡РµСЃРєРёР№ РѕР±СЉРµРєС‚ "РєСЂСѓРі"
 {
 private:
-	int xCo, yCo;             // координаты центра
+	int xCo, yCo;             // РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР°
 	int radius;
-	color fillcolor;         // цвет
-	fstyle fillstyle;        // стиль заполнения
-public:                    // установка атрибутов круга
+	color fillcolor;         // С†РІРµС‚
+	fstyle fillstyle;        // СЃС‚РёР»СЊ Р·Р°РїРѕР»РЅРµРЅРёСЏ
+public:                    // СѓСЃС‚Р°РЅРѕРІРєР° Р°С‚СЂРёР±СѓС‚РѕРІ РєСЂСѓРіР°
 	
 	Circle(int x, int y, int r, color fc, fstyle fs) 
 		: xCo(x), yCo(y), radius(r), fillcolor(fc), fillstyle(fs)
 	{
-		cout << "Привет я объект x ="<< x << endl;
+		cout << "РџСЂРёРІРµС‚ СЏ РѕР±СЉРµРєС‚ x ="<< x << endl;
 	}
 
 	void setX(int x)
@@ -68,86 +68,86 @@ public:                    // установка атрибутов круга
 	{
 		yCo = y;
 	}
-	void draw()                    // рисование круга
+	void draw()                    // СЂРёСЃРѕРІР°РЅРёРµ РєСЂСѓРіР°
 	{
-		set_color(fillcolor);        // установка цвета и
-		set_fill_style(fillstyle);   // стиля заполнения
-		draw_circle(xCo, yCo, radius); // рисование круга
+		set_color(fillcolor);        // СѓСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р° Рё
+		set_fill_style(fillstyle);   // СЃС‚РёР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ
+		draw_circle(xCo, yCo, radius); // СЂРёСЃРѕРІР°РЅРёРµ РєСЂСѓРіР°
 	}
 };
 
-class Distance                       // длина в английской системе
+class Distance                       // РґР»РёРЅР° РІ Р°РЅРіР»РёР№СЃРєРѕР№ СЃРёСЃС‚РµРјРµ
 {
 private:
 	int feet;
 	float inches;
 public:
 	
-	// конструктор без аргументов
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	Distance() : feet(0), inches(0.0)
 	{ }
-	// конструктор с двумя аргументами		
+	// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РґРІСѓРјСЏ Р°СЂРіСѓРјРµРЅС‚Р°РјРё		
 	Distance(int ft, float in) : feet(ft), inches(in)
 	{ }
 	
-	void setdist(int ft, float in)  // установка значений полей
+	void setdist(int ft, float in)  // СѓСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёР№ РїРѕР»РµР№
 	{
 		feet = ft; inches = in;
 	}
-	void getdist()                   // ввод полей с клавиатуры
+	void getdist()                   // РІРІРѕРґ РїРѕР»РµР№ СЃ РєР»Р°РІРёР°С‚СѓСЂС‹
 	{
-		cout << "\nВведите число футов: "; cin >> feet;
-		cout << "Введите число дюймов: "; cin >> inches;
+		cout << "\nР’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ С„СѓС‚РѕРІ: "; cin >> feet;
+		cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РґСЋР№РјРѕРІ: "; cin >> inches;
 	}
-	void showdist();                  // вывод полей на экран
-	void add_dist(Distance, Distance); // прототип
-	Distance add_dist(Distance);       // прототип-сложение
+	void showdist();                  // РІС‹РІРѕРґ РїРѕР»РµР№ РЅР° СЌРєСЂР°РЅ
+	void add_dist(Distance, Distance); // РїСЂРѕС‚РѕС‚РёРї
+	Distance add_dist(Distance);       // РїСЂРѕС‚РѕС‚РёРї-СЃР»РѕР¶РµРЅРёРµ
 };
 
-void Distance::showdist()                  // вывод полей на экран
+void Distance::showdist()                  // РІС‹РІРѕРґ РїРѕР»РµР№ РЅР° СЌРєСЂР°РЅ
 {
 	cout << feet << "'-" << inches << '"';
 }
 
-void Distance::add_dist(Distance d1, Distance d2) //метод класса вне класса
+void Distance::add_dist(Distance d1, Distance d2) //РјРµС‚РѕРґ РєР»Р°СЃСЃР° РІРЅРµ РєР»Р°СЃСЃР°
 {
-	//:: - операция глобального разрешения, Distance::add_dist - функция add_dist, является методом класса Distance
+	//:: - РѕРїРµСЂР°С†РёСЏ РіР»РѕР±Р°Р»СЊРЅРѕРіРѕ СЂР°Р·СЂРµС€РµРЅРёСЏ, Distance::add_dist - С„СѓРЅРєС†РёСЏ add_dist, СЏРІР»СЏРµС‚СЃСЏ РјРµС‚РѕРґРѕРј РєР»Р°СЃСЃР° Distance
 
-	inches = d1.inches + d2.inches;        // сложение дюймов
-	if (inches >= 12.0)                     // если число дюймов больше 12.0,
-	{                                      // то уменьшаем число дюймов
-		inches -= 12.0;                      // на 12.0 и увеличиваем
-		feet = 1;                              // число футов на 1
+	inches = d1.inches + d2.inches;        // СЃР»РѕР¶РµРЅРёРµ РґСЋР№РјРѕРІ
+	if (inches >= 12.0)                     // РµСЃР»Рё С‡РёСЃР»Рѕ РґСЋР№РјРѕРІ Р±РѕР»СЊС€Рµ 12.0,
+	{                                      // С‚Рѕ СѓРјРµРЅСЊС€Р°РµРј С‡РёСЃР»Рѕ РґСЋР№РјРѕРІ
+		inches -= 12.0;                      // РЅР° 12.0 Рё СѓРІРµР»РёС‡РёРІР°РµРј
+		feet = 1;                              // С‡РёСЃР»Рѕ С„СѓС‚РѕРІ РЅР° 1
 	}
-	feet += d1.feet + d2.feet;             // сложение футов
+	feet += d1.feet + d2.feet;             // СЃР»РѕР¶РµРЅРёРµ С„СѓС‚РѕРІ
 }
 
 Distance Distance::add_dist(Distance d2)
 {
-	Distance temp;                    // временная переменная
-	temp.inches = inches + d2.inches; // сложение дюймов
-	if (temp.inches >= 12.0)           // если сумма больше 12.0,
-	{                                 // то уменьшаем ее на 
-		temp.inches -= 12.0;            // 12.0 и увеличиваем
-		temp.feet = 1;                  // число футов на 1
+	Distance temp;                    // РІСЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ
+	temp.inches = inches + d2.inches; // СЃР»РѕР¶РµРЅРёРµ РґСЋР№РјРѕРІ
+	if (temp.inches >= 12.0)           // РµСЃР»Рё СЃСѓРјРјР° Р±РѕР»СЊС€Рµ 12.0,
+	{                                 // С‚Рѕ СѓРјРµРЅСЊС€Р°РµРј РµРµ РЅР° 
+		temp.inches -= 12.0;            // 12.0 Рё СѓРІРµР»РёС‡РёРІР°РµРј
+		temp.feet = 1;                  // С‡РёСЃР»Рѕ С„СѓС‚РѕРІ РЅР° 1
 	}
-	temp.feet += feet + d2.feet;      // сложение футов
+	temp.feet += feet + d2.feet;      // СЃР»РѕР¶РµРЅРёРµ С„СѓС‚РѕРІ
 	return temp;
 }
 
 class Counter
 {
 private:
-	unsigned int count;         // значение счетчика
+	unsigned int count;         // Р·РЅР°С‡РµРЅРёРµ СЃС‡РµС‚С‡РёРєР°
 public:
-	Counter() : count(0)        // конструктор
-	{ /* пустое тело */
+	Counter() : count(0)        // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	{ /* РїСѓСЃС‚РѕРµ С‚РµР»Рѕ */
 	}
-	void inc_count()            // инкрементирование счетчика
+	void inc_count()            // РёРЅРєСЂРµРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ СЃС‡РµС‚С‡РёРєР°
 	{
 		count++;
 	}
-	int get_count()             // получение значения счетчика
+	int get_count()             // РїРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЃС‡РµС‚С‡РёРєР°
 	{
 		return count;
 	}
@@ -156,51 +156,51 @@ public:
 class foo
 {
 private:
-	static int count;        // общее поле для всех объектов
-							 // (в смысле "объявления")
+	static int count;        // РѕР±С‰РµРµ РїРѕР»Рµ РґР»СЏ РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+							 // (РІ СЃРјС‹СЃР»Рµ "РѕР±СЉСЏРІР»РµРЅРёСЏ")
 public:
-	foo()                    // инкрементирование при создании объекта
+	foo()                    // РёРЅРєСЂРµРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ РїСЂРё СЃРѕР·РґР°РЅРёРё РѕР±СЉРµРєС‚Р°
 	{
 		count++;
 	}
-	int getcount()           // возвращает значение count
+	int getcount()           // РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ count
 	{
 		return count;
 	}
 };
-int foo::count = 0;          // *определение* count
+int foo::count = 0;          // *РѕРїСЂРµРґРµР»РµРЅРёРµ* count
 class ConstDistance                  
 {
 private:
 	int feet;
 	float inches;
-public:                       // конструктор без аргументов
+public:                       // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	ConstDistance() : feet(0), inches(0.0)
-	{ }                       // конструктор с двум¤ аргументами
+	{ }                       // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РґРІСѓРјВ¤ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 	ConstDistance(int ft, float in) : feet(ft), inches(in)
 	{ }
-	void getdist()              // ввод длины пользователем
+	void getdist()              // РІРІРѕРґ РґР»РёРЅС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 	{
-		cout << "\nВведите число футов: "; cin >> feet;
-		cout << "Введите число дюймов: "; cin >> inches;
+		cout << "\nР’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ С„СѓС‚РѕРІ: "; cin >> feet;
+		cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РґСЋР№РјРѕРІ: "; cin >> inches;
 	}
-	void showdist()const        // вывод длины
+	void showdist()const        // РІС‹РІРѕРґ РґР»РёРЅС‹
 	{
 		cout << feet << "\'-" << inches << '\"';
 	}
-	//ConstDistance add_dist(ConstDistance&) const; // сложение
-	ConstDistance add_dist(const ConstDistance &d2)const // сложение данного объекта с d2, возврат суммы
+	//ConstDistance add_dist(ConstDistance&) const; // СЃР»РѕР¶РµРЅРёРµ
+	ConstDistance add_dist(const ConstDistance &d2)const // СЃР»РѕР¶РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° СЃ d2, РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹
 {
-	ConstDistance temp;                // временная переменна¤
-	//feet = 0;                  // ошибка: нельзя изменить поле
-	//d2.feet = 0;               // ошибка: нельзя изменить d2
-	temp.inches = inches + d2.inches; // сложение дюймов
-	if (temp.inches >= 12.0)     // если сумма превышает 12.0,
-	{                             // то уменьшаем ее на 12.0
-		temp.inches -= 12.0;        // и увеличиваем число футов
-		temp.feet = 1;              // на 1
+	ConstDistance temp;                // РІСЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°В¤
+	//feet = 0;                  // РѕС€РёР±РєР°: РЅРµР»СЊР·СЏ РёР·РјРµРЅРёС‚СЊ РїРѕР»Рµ
+	//d2.feet = 0;               // РѕС€РёР±РєР°: РЅРµР»СЊР·СЏ РёР·РјРµРЅРёС‚СЊ d2
+	temp.inches = inches + d2.inches; // СЃР»РѕР¶РµРЅРёРµ РґСЋР№РјРѕРІ
+	if (temp.inches >= 12.0)     // РµСЃР»Рё СЃСѓРјРјР° РїСЂРµРІС‹С€Р°РµС‚ 12.0,
+	{                             // С‚Рѕ СѓРјРµРЅСЊС€Р°РµРј РµРµ РЅР° 12.0
+		temp.inches -= 12.0;        // Рё СѓРІРµР»РёС‡РёРІР°РµРј С‡РёСЃР»Рѕ С„СѓС‚РѕРІ
+		temp.feet = 1;              // РЅР° 1
 	}
-	temp.feet += feet + d2.feet;  // сложение футов
+	temp.feet += feet + d2.feet;  // СЃР»РѕР¶РµРЅРёРµ С„СѓС‚РѕРІ
 	return temp;
 }
 };
@@ -211,45 +211,45 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-#pragma region Простой класс
+#pragma region РџСЂРѕСЃС‚РѕР№ РєР»Р°СЃСЃ
 	/*
-	Smallobj s1, s2;           // определение двух объектов класса smallobj
-	s1.setdata(1066);          // вызовы метода setdata()
+	Smallobj s1, s2;           // РѕРїСЂРµРґРµР»РµРЅРёРµ РґРІСѓС… РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР° smallobj
+	s1.setdata(1066);          // РІС‹Р·РѕРІС‹ РјРµС‚РѕРґР° setdata()
 	s2.setdata(1776);
-	s1.getdata();             // вызовы метода showdata()
+	s1.getdata();             // РІС‹Р·РѕРІС‹ РјРµС‚РѕРґР° showdata()
 	s2.getdata();
 	*/
 #pragma endregion
 
-#pragma region Класс part
+#pragma region РљР»Р°СЃСЃ part
 	/*
-	Part part1;                // определение объекта класса part
-	part1.setpart(6244, 373, 217.55F); // вызов метода
-	part1.showpart();                 // вызов метода
+	Part part1;                // РѕРїСЂРµРґРµР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° part
+	part1.setpart(6244, 373, 217.55F); // РІС‹Р·РѕРІ РјРµС‚РѕРґР°
+	part1.showpart();                 // РІС‹Р·РѕРІ РјРµС‚РѕРґР°
 	*/
 #pragma endregion
 
-#pragma region Круги
+#pragma region РљСЂСѓРіРё
 	/*
-	init_graphics();           // инициализация графики
-	Circle c1(15, 7, 5, cBLUE, X_FILL); // создание кругов
+	init_graphics();           // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіСЂР°С„РёРєРё
+	Circle c1(15, 7, 5, cBLUE, X_FILL); // СЃРѕР·РґР°РЅРёРµ РєСЂСѓРіРѕРІ
 	Circle c2(41, 12, 7, cRED, O_FILL);
 	Circle c3(65, 18, 4, cGREEN, MEDIUM_FILL);
-	// установка атрибутов кругов
-	c1.draw();                 // рисование кругов
+	// СѓСЃС‚Р°РЅРѕРІРєР° Р°С‚СЂРёР±СѓС‚РѕРІ РєСЂСѓРіРѕРІ
+	c1.draw();                 // СЂРёСЃРѕРІР°РЅРёРµ РєСЂСѓРіРѕРІ
 	c2.draw();
 	c3.draw();
-	set_cursor_pos(1, 25);      // нижний левый угол
+	set_cursor_pos(1, 25);      // РЅРёР¶РЅРёР№ Р»РµРІС‹Р№ СѓРіРѕР»
 	*/
 #pragma endregion
 
-#pragma region Класс - тип данных
+#pragma region РљР»Р°СЃСЃ - С‚РёРї РґР°РЅРЅС‹С…
 	/*
-	Distance dist1, dist2;              // две длины
+	Distance dist1, dist2;              // РґРІРµ РґР»РёРЅС‹
 	Distance dist3(111, 6.25);
-	dist1.setdist(11, 6.25);            // установка значений дл¤ d1
-	dist2.getdist();                    // ввод значений дл¤ dist2
-									    // вывод длин на экран
+	dist1.setdist(11, 6.25);            // СѓСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёР№ РґР»В¤ d1
+	dist2.getdist();                    // РІРІРѕРґ Р·РЅР°С‡РµРЅРёР№ РґР»В¤ dist2
+									    // РІС‹РІРѕРґ РґР»РёРЅ РЅР° СЌРєСЂР°РЅ
 	cout << "\ndist1 = "; dist1.showdist();
 	cout << "\ndist2 = "; dist2.showdist();
 	cout << "\ndist3 = "; dist3.showdist();
@@ -257,42 +257,42 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Счетчик
+#pragma region РЎС‡РµС‚С‡РёРє
 	/*
-	Counter c1, c2;               // определение с инициализацией
-	cout << "\nc1=" << c1.get_count(); // вывод
+	Counter c1, c2;               // РѕРїСЂРµРґРµР»РµРЅРёРµ СЃ РёРЅРёС†РёР°Р»РёР·Р°С†РёРµР№
+	cout << "\nc1=" << c1.get_count(); // РІС‹РІРѕРґ
 	cout << "\nc2=" << c2.get_count();
-	c1.inc_count();               // инкрементирование c1
-	c2.inc_count();               // инкрементирование c2
-	c2.inc_count();               // инкрементирование c2
+	c1.inc_count();               // РёРЅРєСЂРµРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ c1
+	c2.inc_count();               // РёРЅРєСЂРµРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ c2
+	c2.inc_count();               // РёРЅРєСЂРµРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ c2
 	c2.inc_count();
-	cout << "\nc1=" << c1.get_count(); // вывод
+	cout << "\nc1=" << c1.get_count(); // РІС‹РІРѕРґ
 	cout << "\nc2=" << c2.get_count();
 	cout << endl;
 	*/
 #pragma endregion
 
-#pragma region Круги с конструктором
+#pragma region РљСЂСѓРіРё СЃ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРѕРј
 	/*
-	init_graphics();                // инициализация графики
-	// создание кругов
+	init_graphics();                // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіСЂР°С„РёРєРё
+	// СЃРѕР·РґР°РЅРёРµ РєСЂСѓРіРѕРІ
 	Circle c1(15, 7, 5, cBLUE, X_FILL);
 	Circle c2(41, 12, 7, cRED, O_FILL);
 	Circle c3(65, 18, 4, cGREEN, MEDIUM_FILL);
-	c1.draw();                      // рисование кругов
+	c1.draw();                      // СЂРёСЃРѕРІР°РЅРёРµ РєСЂСѓРіРѕРІ
 	c2.draw();
 	c3.draw();
-	set_cursor_pos(1, 25);          // левый нижний угол
+	set_cursor_pos(1, 25);          // Р»РµРІС‹Р№ РЅРёР¶РЅРёР№ СѓРіРѕР»
 	*/
 #pragma endregion
 
-#pragma region Дистанции с конструкторами
+#pragma region Р”РёСЃС‚Р°РЅС†РёРё СЃ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°РјРё
 	/*
-	Distance dist1, dist3;        // две длины
-	Distance dist2(11, 6.25);     // определение и инициализация
-	dist1.getdist();              // ввод dist1
+	Distance dist1, dist3;        // РґРІРµ РґР»РёРЅС‹
+	Distance dist2(11, 6.25);     // РѕРїСЂРµРґРµР»РµРЅРёРµ Рё РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
+	dist1.getdist();              // РІРІРѕРґ dist1
 	dist3.add_dist(dist1, dist2);  // dist3 = dist1 + dist2
-								   // вывод всех длин
+								   // РІС‹РІРѕРґ РІСЃРµС… РґР»РёРЅ
 	cout << "\ndist1 = "; dist1.showdist();
 	cout << "\ndist2 = "; dist2.showdist();
 	cout << "\ndist3 = "; dist3.showdist();
@@ -300,12 +300,12 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Дистанции, копирующий конструктор
+#pragma region Р”РёСЃС‚Р°РЅС†РёРё, РєРѕРїРёСЂСѓСЋС‰РёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	/*
-	Distance dist1(11, 6.25);  // конструктор с двум¤ аргументами
-	Distance dist2(dist1);     // два конструктора с одним аргументом
+	Distance dist1(11, 6.25);  // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РґРІСѓРјВ¤ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
+	Distance dist2(dist1);     // РґРІР° РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° СЃ РѕРґРЅРёРј Р°СЂРіСѓРјРµРЅС‚РѕРј
 	Distance dist3 = dist1;
-	// вывод всех длин
+	// РІС‹РІРѕРґ РІСЃРµС… РґР»РёРЅ
 	cout << "\ndist1 = "; dist1.showdist();
 	cout << "\ndist2 = "; dist2.showdist();
 	cout << "\ndist3 = "; dist3.showdist();
@@ -313,15 +313,15 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Дистанции, объект, возвращаемый функцией
+#pragma region Р”РёСЃС‚Р°РЅС†РёРё, РѕР±СЉРµРєС‚, РІРѕР·РІСЂР°С‰Р°РµРјС‹Р№ С„СѓРЅРєС†РёРµР№
 	/*
-	Distance dist1, dist3;            // две длины
-	Distance dist2(11, 6.25);         // определение и инициализация dist2
-	dist1.getdist();                  // ввод dist1 пользователем
+	Distance dist1, dist3;            // РґРІРµ РґР»РёРЅС‹
+	Distance dist2(11, 6.25);         // РѕРїСЂРµРґРµР»РµРЅРёРµ Рё РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ dist2
+	dist1.getdist();                  // РІРІРѕРґ dist1 РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 	dist3.add_dist(dist1, dist2);     // dist3 = dist1 + dist2
 	dist3 = dist1.add_dist(dist2);    // dist3 = dist1 + dist2
 
-									  // вывод всех длин
+									  // РІС‹РІРѕРґ РІСЃРµС… РґР»РёРЅ
 	cout << "\ndist1 = "; dist1.showdist();
 	cout << "\ndist2 = "; dist2.showdist();
 	cout << "\ndist3 = "; dist3.showdist();
@@ -329,23 +329,23 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Static или статические поля класса
+#pragma region Static РёР»Рё СЃС‚Р°С‚РёС‡РµСЃРєРёРµ РїРѕР»СЏ РєР»Р°СЃСЃР°
 
-	// создание трех объектов
+	// СЃРѕР·РґР°РЅРёРµ С‚СЂРµС… РѕР±СЉРµРєС‚РѕРІ
 	foo f1;
-	cout << "Число объектов: " << f1.getcount() << endl;
+	cout << "Р§РёСЃР»Рѕ РѕР±СЉРµРєС‚РѕРІ: " << f1.getcount() << endl;
 	foo	f2;
-	cout << "Число объектов: " << f2.getcount() << endl;
+	cout << "Р§РёСЃР»Рѕ РѕР±СЉРµРєС‚РѕРІ: " << f2.getcount() << endl;
 	foo f3;           					
-	cout << "Число объектов: " << f3.getcount() << endl;
+	cout << "Р§РёСЃР»Рѕ РѕР±СЉРµРєС‚РѕРІ: " << f3.getcount() << endl;
 	
 #pragma endregion
 
-#pragma region Константные методы
+#pragma region РљРѕРЅСЃС‚Р°РЅС‚РЅС‹Рµ РјРµС‚РѕРґС‹
 	/*
-	ConstDistance dist1, dist3;        // две длины
-	ConstDistance dist2(11, 6.25);     // определение и инициализаци¤ dist2
-	dist1.getdist();              // ввод dist1
+	ConstDistance dist1, dist3;        // РґРІРµ РґР»РёРЅС‹
+	ConstDistance dist2(11, 6.25);     // РѕРїСЂРµРґРµР»РµРЅРёРµ Рё РёРЅРёС†РёР°Р»РёР·Р°С†РёВ¤ dist2
+	dist1.getdist();              // РІРІРѕРґ dist1
 	dist3 = dist1.add_dist(dist2);//dist3 = dist1 + dist2
 	cout << "\ndist1 = "; dist1.showdist();
 	cout << "\ndist2 = "; dist2.showdist();
@@ -354,12 +354,12 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Константные объекты
+#pragma region РљРѕРЅСЃС‚Р°РЅС‚РЅС‹Рµ РѕР±СЉРµРєС‚С‹
     /*
 	const ConstDistance football(300, 0);
-	//football.getdist();      // ошибка: метод getdist() неконстантный
-	cout << " Длина пол¤ равна: ";
-	football.showdist();       // корректно
+	//football.getdist();      // РѕС€РёР±РєР°: РјРµС‚РѕРґ getdist() РЅРµРєРѕРЅСЃС‚Р°РЅС‚РЅС‹Р№
+	cout << " Р”Р»РёРЅР° РїРѕР»В¤ СЂР°РІРЅР°: ";
+	football.showdist();       // РєРѕСЂСЂРµРєС‚РЅРѕ
 	cout << endl;
 	*/
 #pragma endregion

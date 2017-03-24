@@ -1,4 +1,4 @@
-// Lection8.cpp : Defines the entry point for the console application.
+п»ї// Lection8.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -12,28 +12,28 @@
 using namespace std;
 
 
-const int LEN = 80;       // максимальная длина выражения
+const int LEN = 80;       // РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РІС‹СЂР°Р¶РµРЅРёСЏ
 const int MAX = 40;
 
 class Stack
 {
 private:
-	char st[MAX];         // массив данных
-	int top;              // количество сохраненных данных
+	char st[MAX];         // РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+	int top;              // РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… РґР°РЅРЅС‹С…
 public:
 	Stack()
 	{
 		top = 0;
 	}
-	void push(char var)  // поместить в стек
+	void push(char var)  // РїРѕРјРµСЃС‚РёС‚СЊ РІ СЃС‚РµРє
 	{
 		st[++top] = var;
 	}
-	char pop()           // взять из стека
+	char pop()           // РІР·СЏС‚СЊ РёР· СЃС‚РµРєР°
 	{
 		return st[top--];
 	}
-	int gettop()         // узнать количество элементов
+	int gettop()         // СѓР·РЅР°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
 	{
 		return top;
 	}
@@ -42,99 +42,99 @@ public:
 class express
 {
 private:
-	Stack s;                   // стек данных
-	char* pStr;                // строка для ввода
-	int len;                   // длина строки
+	Stack s;                   // СЃС‚РµРє РґР°РЅРЅС‹С…
+	char* pStr;                // СЃС‚СЂРѕРєР° РґР»СЏ РІРІРѕРґР°
+	int len;                   // РґР»РёРЅР° СЃС‚СЂРѕРєРё
 public:
-	express(char* ptr)      // конструктор
+	express(char* ptr)      // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 	{
-		pStr = ptr;            // запоминаем указатель на строку
-		len = strlen(pStr);    // устанавливаем длину
+		pStr = ptr;            // Р·Р°РїРѕРјРёРЅР°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєСѓ
+		len = strlen(pStr);    // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґР»РёРЅСѓ
 	}
 
-	void parse()              // добавляем данные в стек
+	void parse()              // РґРѕР±Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ РІ СЃС‚РµРє
 	{
-		char ch;              // символ из строки
-		char lastval;         // последнее значение
-		char lastop;          // последний оператор
+		char ch;              // СЃРёРјРІРѕР» РёР· СЃС‚СЂРѕРєРё
+		char lastval;         // РїРѕСЃР»РµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ
+		char lastop;          // РїРѕСЃР»РµРґРЅРёР№ РѕРїРµСЂР°С‚РѕСЂ
 
-		for (int j = 0; j < len; j++) // для всех символов в строке
+		for (int j = 0; j < len; j++) // РґР»СЏ РІСЃРµС… СЃРёРјРІРѕР»РѕРІ РІ СЃС‚СЂРѕРєРµ
 		{
-			ch = pStr[j];    // получаем символ
+			ch = pStr[j];    // РїРѕР»СѓС‡Р°РµРј СЃРёРјРІРѕР»
 
-			if (ch >= '0' && ch <= '9') // если это цифра,
-				s.push(ch - '0');        // то сохраняем ее значение
+			if (ch >= '0' && ch <= '9') // РµСЃР»Рё СЌС‚Рѕ С†РёС„СЂР°,
+				s.push(ch - '0');        // С‚Рѕ СЃРѕС…СЂР°РЅСЏРµРј РµРµ Р·РЅР°С‡РµРЅРёРµ
 			else
 				if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
 				{
-					if (s.gettop() == 1)    // если это первый оператор,
-						s.push(ch);         // помещаем его в стек
-					else // иначе
+					if (s.gettop() == 1)    // РµСЃР»Рё СЌС‚Рѕ РїРµСЂРІС‹Р№ РѕРїРµСЂР°С‚РѕСЂ,
+						s.push(ch);         // РїРѕРјРµС‰Р°РµРј РµРіРѕ РІ СЃС‚РµРє
+					else // РёРЅР°С‡Рµ
 					{
-						lastval = s.pop(); // получаем предыдущее число
-						lastop = s.pop();  // получаем предыдущий оператор
-										   // если это * или /, а предыдущий был + или -, то
+						lastval = s.pop(); // РїРѕР»СѓС‡Р°РµРј РїСЂРµРґС‹РґСѓС‰РµРµ С‡РёСЃР»Рѕ
+						lastop = s.pop();  // РїРѕР»СѓС‡Р°РµРј РїСЂРµРґС‹РґСѓС‰РёР№ РѕРїРµСЂР°С‚РѕСЂ
+										   // РµСЃР»Рё СЌС‚Рѕ * РёР»Рё /, Р° РїСЂРµРґС‹РґСѓС‰РёР№ Р±С‹Р» + РёР»Рё -, С‚Рѕ
 						if ((ch == '*' || ch == '/') && (lastop == '+' || lastop == '-'))
 						{
-							s.push(lastop); // отменяем последние два взятия из стека
+							s.push(lastop); // РѕС‚РјРµРЅСЏРµРј РїРѕСЃР»РµРґРЅРёРµ РґРІР° РІР·СЏС‚РёСЏ РёР· СЃС‚РµРєР°
 							s.push(lastval);
 						}
 						else
 						{
-							// помещаем в стек результат операции
+							// РїРѕРјРµС‰Р°РµРј РІ СЃС‚РµРє СЂРµР·СѓР»СЊС‚Р°С‚ РѕРїРµСЂР°С†РёРё
 							switch (lastop)
 							{
 							case '+': s.push(s.pop() + lastval); break;
 							case '-': s.push(s.pop() - lastval); break;
 							case '*': s.push(s.pop() * lastval); break;
 							case '/': s.push(s.pop() / lastval); break;
-							default: cout << "\nНеизвестный оператор"; exit(1);
+							default: cout << "\nРќРµРёР·РІРµСЃС‚РЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ"; exit(1);
 							}
 						}
-						s.push(ch); // помещаем в стек текущий оператор
+						s.push(ch); // РїРѕРјРµС‰Р°РµРј РІ СЃС‚РµРє С‚РµРєСѓС‰РёР№ РѕРїРµСЂР°С‚РѕСЂ
 					}
 				}
 				else
 				{
-					cout << "\nНеизвестный символ";
+					cout << "\nРќРµРёР·РІРµСЃС‚РЅС‹Р№ СЃРёРјРІРѕР»";
 					exit(1);
 				}
 		}
 	}
 
 
-	int solve()				 // убираем данные из стека
+	int solve()				 // СѓР±РёСЂР°РµРј РґР°РЅРЅС‹Рµ РёР· СЃС‚РµРєР°
 	{
-		char lastval;        // предыдущее значение
+		char lastval;        // РїСЂРµРґС‹РґСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ
 
 		while (s.gettop() > 1)
 		{
-			lastval = s.pop(); // получаем предыдущее значение
-			switch (s.pop()) // получаем предыдущий оператор
+			lastval = s.pop(); // РїРѕР»СѓС‡Р°РµРј РїСЂРµРґС‹РґСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ
+			switch (s.pop()) // РїРѕР»СѓС‡Р°РµРј РїСЂРµРґС‹РґСѓС‰РёР№ РѕРїРµСЂР°С‚РѕСЂ
 			{
 			case '+': s.push(s.pop() + lastval); break;
 			case '-': s.push(s.pop() - lastval); break;
 			case '*': s.push(s.pop() * lastval); break;
 			case '/': s.push(s.pop() / lastval); break;
-			default: cout << "\nНеизвестный оператор"; exit(1);
+			default: cout << "\nРќРµРёР·РІРµСЃС‚РЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ"; exit(1);
 			}
 		}
-		return int(s.pop()); // последний оператор в стеке – это результат
+		return int(s.pop()); // РїРѕСЃР»РµРґРЅРёР№ РѕРїРµСЂР°С‚РѕСЂ РІ СЃС‚РµРєРµ вЂ“ СЌС‚Рѕ СЂРµР·СѓР»СЊС‚Р°С‚
 	}
 };
 
 #pragma region 1
 /*
-class Base                //Базовый класс
+class Base                //Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
 {
 	public:
-	void  show()           //Обычная функция
+	void  show()           //РћР±С‹С‡РЅР°СЏ С„СѓРЅРєС†РёСЏ
 	{
 		cout << "Base\n";
 	}
 };
 
-class Derv1 : public Base //Производный класс 1
+class Derv1 : public Base //РџСЂРѕРёР·РІРѕРґРЅС‹Р№ РєР»Р°СЃСЃ 1
 {
 	public:
 	void  show()
@@ -143,7 +143,7 @@ class Derv1 : public Base //Производный класс 1
 	}
 };
 
-class Derv2 : public Base //Производный класс 2
+class Derv2 : public Base //РџСЂРѕРёР·РІРѕРґРЅС‹Р№ РєР»Р°СЃСЃ 2
 {
 	public:
 	void  show()
@@ -157,16 +157,16 @@ class Derv2 : public Base //Производный класс 2
 
 #pragma region 2
 /*
-class Base                //Базовый класс
+class Base                //Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
 {
 public:
-	virtual void  show()    //Виртуальная функция
+	virtual void  show()    //Р’РёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ
 	{
 		cout << "Base\n";
 	}
 };
 
-class Derv1 : public Base //Производный класс 1
+class Derv1 : public Base //РџСЂРѕРёР·РІРѕРґРЅС‹Р№ РєР»Р°СЃСЃ 1
 {
 public:
 	void  show()
@@ -175,7 +175,7 @@ public:
 	}
 };
 
-class Derv2 : public Base //Производный класс 2
+class Derv2 : public Base //РџСЂРѕРёР·РІРѕРґРЅС‹Р№ РєР»Р°СЃСЃ 2
 {
 public:
 	void  show()
@@ -189,14 +189,14 @@ public:
 
 #pragma region 3
 /*
-class Base                   //абстрактный класс
+class Base                   //Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ
 {
 public:
-	virtual void show() = 0; //чистая виртуальная функция
-						//значение ничему не присваивается
+	virtual void show() = 0; //С‡РёСЃС‚Р°СЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ
+						//Р·РЅР°С‡РµРЅРёРµ РЅРёС‡РµРјСѓ РЅРµ РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ
 };
 
-class Derv1 : public Base    //порожденный класс 1
+class Derv1 : public Base    //РїРѕСЂРѕР¶РґРµРЅРЅС‹Р№ РєР»Р°СЃСЃ 1
 {
 public:
 void show()
@@ -205,7 +205,7 @@ cout << "Derv1\n" ;
 }
 };
 
-class Derv2 : public Base    //порожденный класс 2
+class Derv2 : public Base    //РїРѕСЂРѕР¶РґРµРЅРЅС‹Р№ РєР»Р°СЃСЃ 2
 {
 public:
 void show()
@@ -217,33 +217,33 @@ cout << "Derv2\n" ;
 */
 #pragma endregion
 
-class person                    //класс person
+class person                    //РєР»Р°СЃСЃ person
 {
 protected:
 	char name[40];
 public:
 	void getName()
 	{
-		cout << "  Введите имя: "; cin >> name;
+		cout << "  Р’РІРµРґРёС‚Рµ РёРјСЏ: "; cin >> name;
 	}
 	void putName()
 	{
 		cout << "  Name: " << name << endl;
 	}
-	virtual void getData() = 0;       //чистые
-	virtual bool isOutstanding() = 0; //виртуальные
-									  //функции
+	virtual void getData() = 0;       //С‡РёСЃС‚С‹Рµ
+	virtual bool isOutstanding() = 0; //РІРёСЂС‚СѓР°Р»СЊРЅС‹Рµ
+									  //С„СѓРЅРєС†РёРё
 };
 
-class student : public person   //класс student
+class student : public person   //РєР»Р°СЃСЃ student
 {
 private:
-	float gpa;                //средний балл
+	float gpa;                //СЃСЂРµРґРЅРёР№ Р±Р°Р»Р»
 public:
-	void getData()            //запросить данные об ученике 
+	void getData()            //Р·Р°РїСЂРѕСЃРёС‚СЊ РґР°РЅРЅС‹Рµ РѕР± СѓС‡РµРЅРёРєРµ 
 	{
 		person::getName();
-		cout << "  Средний балл ученика:  "; cin >> gpa;
+		cout << "  РЎСЂРµРґРЅРёР№ Р±Р°Р»Р» СѓС‡РµРЅРёРєР°:  "; cin >> gpa;
 	}
 	bool isOutstanding()
 	{
@@ -251,15 +251,15 @@ public:
 	}
 };
 
-class professor : public person //класс professor
+class professor : public person //РєР»Р°СЃСЃ professor
 {
 private:
-	int numPubs;              //число публикаций
+	int numPubs;              //С‡РёСЃР»Рѕ РїСѓР±Р»РёРєР°С†РёР№
 public:
-	void getData()            //запросить данные о педагоге у
-	{                       //пользователя
+	void getData()            //Р·Р°РїСЂРѕСЃРёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ РїРµРґР°РіРѕРіРµ Сѓ
+	{                       //РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 		person::getName();
-		cout << "  Число публикаций:  "; cin >> numPubs;
+		cout << "  Р§РёСЃР»Рѕ РїСѓР±Р»РёРєР°С†РёР№:  "; cin >> numPubs;
 	}
 	bool isOutstanding()
 	{
@@ -268,20 +268,20 @@ public:
 };
 
 
-class shape                   //базовый класс
+class shape                   //Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
 {
 protected:
-	int xCo, yCo;           //координаты центра
-	color fillcolor;        //цвет
-	fstyle fillstyle;       //заполнение
-public:                     //конструктор без аргументов
+	int xCo, yCo;           //РєРѕРѕСЂРґРёРЅР°С‚С‹ С†РµРЅС‚СЂР°
+	color fillcolor;        //С†РІРµС‚
+	fstyle fillstyle;       //Р·Р°РїРѕР»РЅРµРЅРёРµ
+public:                     //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	shape() : xCo(0), yCo(0), fillcolor(cWHITE),
 		fillstyle(SOLID_FILL)
-	{  }                 //конструктор с четырьмя аргументами
+	{  }                 //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ С‡РµС‚С‹СЂСЊРјСЏ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 	shape(int x, int y, color fc, fstyle fs) :
 		xCo(x), yCo(y), fillcolor(fc), fillstyle(fs)
 	{  }
-	virtual void draw() = 0 //чистая виртуальная функция
+	virtual void draw() = 0 //С‡РёСЃС‚Р°СЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ
 	{
 		set_color(fillcolor);
 		set_fill_style(fillstyle);
@@ -291,15 +291,15 @@ public:                     //конструктор без аргументов
 class ball : public shape
 {
 private:
-	int radius;          //центр с координатами(xCo, yCo)
+	int radius;          //С†РµРЅС‚СЂ СЃ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё(xCo, yCo)
 public:
-	ball() : shape()     //конструктор без аргументов
+	ball() : shape()     //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	{  }
-	//конструктор с пятью аргументами
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїСЏС‚СЊСЋ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 	ball(int x, int y, int r, color fc, fstyle fs)
 		: shape(x, y, fc, fs), radius(r)
 	{  }
-	void draw()          //нарисовать шарик
+	void draw()          //РЅР°СЂРёСЃРѕРІР°С‚СЊ С€Р°СЂРёРє
 	{
 		shape::draw();
 		draw_circle(xCo, yCo, radius);
@@ -309,18 +309,18 @@ public:
 class rect : public shape
 {
 private:
-	int width, height;   //(xCo, yCo) - верхний левый угол
+	int width, height;   //(xCo, yCo) - РІРµСЂС…РЅРёР№ Р»РµРІС‹Р№ СѓРіРѕР»
 public:
-	rect() : shape(), height(0), width(0) //конструктор без аргументов
-	{  }              //конструктор с шестью аргументами
+	rect() : shape(), height(0), width(0) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
+	{  }              //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ С€РµСЃС‚СЊСЋ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 	rect(int x, int y, int h, int w, color fc, fstyle fs) :
 		shape(x, y, fc, fs), height(h), width(w)
 	{  }
-	void draw()             //нарисовать прямоугольник
+	void draw()             //РЅР°СЂРёСЃРѕРІР°С‚СЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
 	{
 		shape::draw();
 		draw_rectangle(xCo, yCo, xCo + width, yCo + height);
-		set_color(cWHITE);   //нарисовать диагональ
+		set_color(cWHITE);   //РЅР°СЂРёСЃРѕРІР°С‚СЊ РґРёР°РіРѕРЅР°Р»СЊ
 		draw_line(xCo, yCo, xCo + width, yCo + height);
 	}
 };
@@ -328,14 +328,14 @@ public:
 class tria : public shape
 {
 private:
-	int height;                 //(xCo, yCo) - вершина пирамиды
+	int height;                 //(xCo, yCo) - РІРµСЂС€РёРЅР° РїРёСЂР°РјРёРґС‹
 public:
-	tria() : shape(), height(0) //конструктор без аргументов
-	{ }                      //конструктор с пятью аргументами
+	tria() : shape(), height(0) //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
+	{ }                      //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїСЏС‚СЊСЋ Р°СЂРіСѓРјРµРЅС‚Р°РјРё
 	tria(int x, int y, int h, color fc, fstyle fs) :
 		shape(x, y, fc, fs), height(h)
 	{  }
-	void draw()                 //нарисовать треугольник
+	void draw()                 //РЅР°СЂРёСЃРѕРІР°С‚СЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
 	{
 		shape::draw();
 		draw_pyramid(xCo, yCo, height);
@@ -347,10 +347,10 @@ public:
 class Base
 {
 public:
-	//~Base()             //невиртуальный деструктор
-	virtual ~Base()         //виртуальный деструктор
+	//~Base()             //РЅРµРІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	virtual ~Base()         //РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 	{
-		cout << "Base удален\n";
+		cout << "Base СѓРґР°Р»РµРЅ\n";
 	}
 };
 
@@ -359,7 +359,7 @@ class Derv : public Base
 public:
 	~Derv()
 	{
-		cout << "Derv удален\n";
+		cout << "Derv СѓРґР°Р»РµРЅ\n";
 	}
 };
 
@@ -380,18 +380,18 @@ class Grandchild : public Child1, public Child2
 public:
 	int getdata()
 	{
-		//return basedata; //ОШИБКА: неоднозначность
+		//return basedata; //РћРЁРР‘РљРђ: РЅРµРѕРґРЅРѕР·РЅР°С‡РЅРѕСЃС‚СЊ
 	}
 };
 
-class beta;              //нужно для объявления frifunc
+class beta;              //РЅСѓР¶РЅРѕ РґР»СЏ РѕР±СЉСЏРІР»РµРЅРёСЏ frifunc
 class alpha
 {
 private:
 	int data;
 public:
-	alpha() : data(3) {  }   //конструктор без аргументов
-	friend int frifunc(alpha, beta); //дружественная функция
+	alpha() : data(3) {  }   //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
+	friend int frifunc(alpha, beta); //РґСЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ
 };
 
 class beta
@@ -399,11 +399,11 @@ class beta
 private:
 	int data;
 public:
-	beta() : data(7) {  }     //конструктор без аргументов
-	friend int frifunc(alpha, beta);       //дружественная функция
+	beta() : data(7) {  }     //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
+	friend int frifunc(alpha, beta);       //РґСЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ
 };
 
-int frifunc(alpha a, beta b)           //определение функции
+int frifunc(alpha a, beta b)           //РѕРїСЂРµРґРµР»РµРЅРёРµ С„СѓРЅРєС†РёРё
 {
 	return(a.data + b.data);
 }
@@ -416,7 +416,7 @@ private:
 public:
 	Distance() : feet(0), inches(0.0)
 	{  }
-	Distance(float fltfeet)           //переводит float в Distance
+	Distance(float fltfeet)           //РїРµСЂРµРІРѕРґРёС‚ float РІ Distance
 	{
 		feet = static_cast<int>(fltfeet);
 		inches = 12 * (fltfeet - feet);
@@ -425,54 +425,54 @@ public:
 	{
 		feet = ft; inches = in;
 	}
-	void showdist()                    //вывод на экран расстояния
+	void showdist()                    //РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
 	{
 		cout << feet << "\'-" << inches << '\"';
 	}
 	//Distance operator + (Distance);
-	//friend Distance operator + (Distance, Distance); //дружественный
+	//friend Distance operator + (Distance, Distance); //РґСЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Р№
 	/*
-	float square()		//возвращает квадрат
+	float square()		//РІРѕР·РІСЂР°С‰Р°РµС‚ РєРІР°РґСЂР°С‚
 	{
-		float fltfeet = feet + inches / 12;	 //перевод во float
-		float feetsqrd = fltfeet * fltfeet;  //возведение в квадрат
+		float fltfeet = feet + inches / 12;	 //РїРµСЂРµРІРѕРґ РІРѕ float
+		float feetsqrd = fltfeet * fltfeet;  //РІРѕР·РІРµРґРµРЅРёРµ РІ РєРІР°РґСЂР°С‚
 		return feetsqrd;
 	}*/
 
-	friend float square(Distance); //дружественная ф-ция
+	friend float square(Distance); //РґСЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„-С†РёСЏ
 };
 /*
-Distance Distance::operator + (Distance d2) //сумма
+Distance Distance::operator + (Distance d2) //СЃСѓРјРјР°
 {
-	int f = feet + d2.feet;       //добавить футы
-	float i = inches + d2.inches; //добавить дюймы
-	if (i >= 12.0)                //если сумма превышает 12.0,
+	int f = feet + d2.feet;       //РґРѕР±Р°РІРёС‚СЊ С„СѓС‚С‹
+	float i = inches + d2.inches; //РґРѕР±Р°РІРёС‚СЊ РґСЋР№РјС‹
+	if (i >= 12.0)                //РµСЃР»Рё СЃСѓРјРјР° РїСЂРµРІС‹С€Р°РµС‚ 12.0,
 		{
 			i -= 12.0; f++;
 		}
-	return Distance(f, i);         //Новый Distance с суммой
+	return Distance(f, i);         //РќРѕРІС‹Р№ Distance СЃ СЃСѓРјРјРѕР№
 }
 
 Distance operator + (Distance d1, Distance d2) // d1 + d2
 {
-	int f = d1.feet + d2.feet;       //+ футы
-	float i = d1.inches + d2.inches; //+ дюймы
-	if (i >= 12.0)                    //если больше 12 дюймов,
+	int f = d1.feet + d2.feet;       //+ С„СѓС‚С‹
+	float i = d1.inches + d2.inches; //+ РґСЋР№РјС‹
+	if (i >= 12.0)                    //РµСЃР»Рё Р±РѕР»СЊС€Рµ 12 РґСЋР№РјРѕРІ,
 	{
 		i -= 12.0; f++;
-	}           //уменьшить на 12 дюймов,
-				//прибавить 1 фут
-	return Distance(f, i);            //Новая длина с суммой
+	}           //СѓРјРµРЅСЊС€РёС‚СЊ РЅР° 12 РґСЋР№РјРѕРІ,
+				//РїСЂРёР±Р°РІРёС‚СЊ 1 С„СѓС‚
+	return Distance(f, i);            //РќРѕРІР°СЏ РґР»РёРЅР° СЃ СЃСѓРјРјРѕР№
 }
 
 */
 
-float square(Distance d)                //вернуть квадрат
-{                                     //расстояния
-	float fltfeet = d.feet + d.inches / 12; //конвертировать 
-											//в тип float
-	float feetsqrd = fltfeet * fltfeet;   //вычислить квадрат
-	return feetsqrd;                      //вернуть квадратные футы
+float square(Distance d)                //РІРµСЂРЅСѓС‚СЊ РєРІР°РґСЂР°С‚
+{                                     //СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
+	float fltfeet = d.feet + d.inches / 12; //РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°С‚СЊ 
+											//РІ С‚РёРї float
+	float feetsqrd = fltfeet * fltfeet;   //РІС‹С‡РёСЃР»РёС‚СЊ РєРІР°РґСЂР°С‚
+	return feetsqrd;                      //РІРµСЂРЅСѓС‚СЊ РєРІР°РґСЂР°С‚РЅС‹Рµ С„СѓС‚С‹
 }
 
 
@@ -481,12 +481,12 @@ class gamma
 private:
 	int data1;
 public:
-	gamma() : data1(99) {  }  //конструктор
-	friend class delta;        //delta - дружественный класс
+	gamma() : data1(99) {  }  //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	friend class delta;        //delta - РґСЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Р№ РєР»Р°СЃСЃ
 };
 
 class delta
-{     //все методы имеют доступ к скрытым данным gamma
+{     //РІСЃРµ РјРµС‚РѕРґС‹ РёРјРµСЋС‚ РґРѕСЃС‚СѓРї Рє СЃРєСЂС‹С‚С‹Рј РґР°РЅРЅС‹Рј gamma
 public:
 	void func1(gamma a) { cout << "\ndata1=" << a.data1; }
 	void func2(gamma a) { cout << "\ndata1=" << a.data1; }
@@ -495,51 +495,51 @@ public:
 class tetta
 {
 private:
-	static int total;       //всего объектов класса
-	int id;                 //ID текущего объекта
+	static int total;       //РІСЃРµРіРѕ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°
+	int id;                 //ID С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р°
 public:
-	tetta()                 //конструктор без аргументов
+	tetta()                 //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	{
-		total++;              //добавить объект
-		id = total;           //id равен текущему значению total
+		total++;              //РґРѕР±Р°РІРёС‚СЊ РѕР±СЉРµРєС‚
+		id = total;           //id СЂР°РІРµРЅ С‚РµРєСѓС‰РµРјСѓ Р·РЅР°С‡РµРЅРёСЋ total
 	}
-	~tetta()                //деструктор
+	~tetta()                //РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 	{
 		total--;
-		cout << "Удаление ID " << id << endl;
+		cout << "РЈРґР°Р»РµРЅРёРµ ID " << id << endl;
 	}
-	static void showtotal() // статическая функция
+	static void showtotal() // СЃС‚Р°С‚РёС‡РµСЃРєР°СЏ С„СѓРЅРєС†РёСЏ
 	{
-		cout << "Всего: " << total << endl;
+		cout << "Р’СЃРµРіРѕ: " << total << endl;
 	}
-	void showid()           // Нестатическая функция
+	void showid()           // РќРµСЃС‚Р°С‚РёС‡РµСЃРєР°СЏ С„СѓРЅРєС†РёСЏ
 	{
 		cout << "ID: " << id << endl;
 	}
 };
 
-int tetta::total = 0;       // определение total
+int tetta::total = 0;       // РѕРїСЂРµРґРµР»РµРЅРёРµ total
 
 class alphaq
 {
 private:
 	int data;
 public:
-	alphaq()                     //конструктор без аргументов
+	alphaq()                     //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	{ }
-	alphaq(int d)                //конструктор с одним аргументом
+	alphaq(int d)                //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РѕРґРЅРёРј Р°СЂРіСѓРјРµРЅС‚РѕРј
 	{
 		data = d;
 	}
-	void display()              //вывести данные
+	void display()              //РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
 	{
 		cout << data;
 	}
-	alphaq operator = (alphaq& a) //перегружаемый = 
+	alphaq operator = (alphaq& a) //РїРµСЂРµРіСЂСѓР¶Р°РµРјС‹Р№ = 
 	{
-		data = a.data;             //не выполняется автоматически
-		cout << "\nЗапущен оператор присваивания";
-		return alphaq(data);       //возвращает копию alphaq
+		data = a.data;             //РЅРµ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+		cout << "\nР—Р°РїСѓС‰РµРЅ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ";
+		return alphaq(data);       //РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕРїРёСЋ alphaq
 	}
 };
 
@@ -547,11 +547,11 @@ public:
 class where
 {
 private:
-	char charray[10];  //массив из 10 байтов
+	char charray[10];  //РјР°СЃСЃРёРІ РёР· 10 Р±Р°Р№С‚РѕРІ
 public:
 	void reveal()
 	{
-		cout << "\nМой адрес - " << this;
+		cout << "\nРњРѕР№ Р°РґСЂРµСЃ - " << this;
 	}
 };
 
@@ -562,8 +562,8 @@ private:
 public:
 	void tester()
 	{
-		this->alpha = 11;    //то же,что alpha = 11;
-		cout << this->alpha; //то же, что cout <<
+		this->alpha = 11;    //С‚Рѕ Р¶Рµ,С‡С‚Рѕ alpha = 11;
+		cout << this->alpha; //С‚Рѕ Р¶Рµ, С‡С‚Рѕ cout <<
 							 //alpha;
 	}
 };
@@ -573,22 +573,22 @@ class alphathis
 private:
 	int data;
 public:
-	alphathis()                      // конструктор без аргументов
+	alphathis()                      // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· Р°СЂРіСѓРјРµРЅС‚РѕРІ
 	{ }
-	alphathis(int d)                 // конструктор с одним аргументом
+	alphathis(int d)                 // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РѕРґРЅРёРј Р°СЂРіСѓРјРµРЅС‚РѕРј
 	{
 		data = d;
 	}
-	void display()               // вывести данные
+	void display()               // РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
 	{
 		cout << data;
 	}
 
-	alphathis& operator = (alphathis& a) // перегружаемая операция =
+	alphathis& operator = (alphathis& a) // РїРµСЂРµРіСЂСѓР¶Р°РµРјР°СЏ РѕРїРµСЂР°С†РёСЏ =
 	{
-		data = a.data;             // не делается автоматически
-		cout << "\nЗапущен оператор присваивания";
-		return *this;              // вернуть this alpha
+		data = a.data;             // РЅРµ РґРµР»Р°РµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+		cout << "\nР—Р°РїСѓС‰РµРЅ РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ";
+		return *this;              // РІРµСЂРЅСѓС‚СЊ this alpha
 	}
 };
 
@@ -599,166 +599,166 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-#pragma region Разбор арифметических выражений
+#pragma region Р Р°Р·Р±РѕСЂ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РІС‹СЂР°Р¶РµРЅРёР№
 	/*
-	char ans;            // 'y' или 'n'
-	char string[LEN]; // строка для разбора
+	char ans;            // 'y' РёР»Рё 'n'
+	char string[LEN]; // СЃС‚СЂРѕРєР° РґР»СЏ СЂР°Р·Р±РѕСЂР°
 
-	cout << "\nВведите арифметическое выражение в виде 2+3*4/3-2"
-		    "\nЧисла должны быть из одной цифры"
-		    "\nНе используйте пробелы и скобки";
+	cout << "\nР’РІРµРґРёС‚Рµ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ РІ РІРёРґРµ 2+3*4/3-2"
+		    "\nР§РёСЃР»Р° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РёР· РѕРґРЅРѕР№ С†РёС„СЂС‹"
+		    "\nРќРµ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РїСЂРѕР±РµР»С‹ Рё СЃРєРѕР±РєРё";
 	do
 	{
-		cout << "\nВыражение: ";
-		cin >> string;                          // вводим строку
-		express* eptr = new express(string);    // создаем объект для разбора
-		eptr->parse();                          // разбираем
-		cout << "\nРезультат: "
-			<< eptr->solve();                   // решаем
-		delete eptr;                            // удаляем объект
-		cout << "\nЕще одно выражение (y/n)? ";
+		cout << "\nР’С‹СЂР°Р¶РµРЅРёРµ: ";
+		cin >> string;                          // РІРІРѕРґРёРј СЃС‚СЂРѕРєСѓ
+		express* eptr = new express(string);    // СЃРѕР·РґР°РµРј РѕР±СЉРµРєС‚ РґР»СЏ СЂР°Р·Р±РѕСЂР°
+		eptr->parse();                          // СЂР°Р·Р±РёСЂР°РµРј
+		cout << "\nР РµР·СѓР»СЊС‚Р°С‚: "
+			<< eptr->solve();                   // СЂРµС€Р°РµРј
+		delete eptr;                            // СѓРґР°Р»СЏРµРј РѕР±СЉРµРєС‚
+		cout << "\nР•С‰Рµ РѕРґРЅРѕ РІС‹СЂР°Р¶РµРЅРёРµ (y/n)? ";
 		cin >> ans;
 	} while (ans == 'y');
 	*/
 #pragma endregion
 
-#pragma region Доступ к методам через указатели (1)
+#pragma region Р”РѕСЃС‚СѓРї Рє РјРµС‚РѕРґР°Рј С‡РµСЂРµР· СѓРєР°Р·Р°С‚РµР»Рё (1)
 	/*
-	Derv1 dv1;          //Объект производного класса 1
-	Derv2 dv2;          //Объект производного класса 2
-	Base* ptr;          //Указатель на базовый класс
+	Derv1 dv1;          //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 1
+	Derv2 dv2;          //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 2
+	Base* ptr;          //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
 
-	ptr = &dv1;         //Адрес dv1 занести в указатель
-	ptr->show();        //Выполнить show()
-	ptr = &dv2;         //Адрес dv2 занести в указатель
-	ptr->show();        //Выполнить show()
+	ptr = &dv1;         //РђРґСЂРµСЃ dv1 Р·Р°РЅРµСЃС‚Рё РІ СѓРєР°Р·Р°С‚РµР»СЊ
+	ptr->show();        //Р’С‹РїРѕР»РЅРёС‚СЊ show()
+	ptr = &dv2;         //РђРґСЂРµСЃ dv2 Р·Р°РЅРµСЃС‚Рё РІ СѓРєР°Р·Р°С‚РµР»СЊ
+	ptr->show();        //Р’С‹РїРѕР»РЅРёС‚СЊ show()
 	*/
-	//Вывод - компилятор не смотрит на содержимое, а выбирает метод
-	//который удовлетворяет типу указателя.
+	//Р’С‹РІРѕРґ - РєРѕРјРїРёР»СЏС‚РѕСЂ РЅРµ СЃРјРѕС‚СЂРёС‚ РЅР° СЃРѕРґРµСЂР¶РёРјРѕРµ, Р° РІС‹Р±РёСЂР°РµС‚ РјРµС‚РѕРґ
+	//РєРѕС‚РѕСЂС‹Р№ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ С‚РёРїСѓ СѓРєР°Р·Р°С‚РµР»СЏ.
 	
 #pragma endregion
 
-#pragma region Доступ к виртуальным методам через указатели (2)
+#pragma region Р”РѕСЃС‚СѓРї Рє РІРёСЂС‚СѓР°Р»СЊРЅС‹Рј РјРµС‚РѕРґР°Рј С‡РµСЂРµР· СѓРєР°Р·Р°С‚РµР»Рё (2)
 	/*
-	Derv1 dv1;            //Объект производного класса 1
-	Derv2 dv2;            //Объект производного класса 2
-	Base* ptr;            //Указатель на базовый класс
+	Derv1 dv1;            //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 1
+	Derv2 dv2;            //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 2
+	Base* ptr;            //РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
 
-	ptr = &dv1;            //Адрес dv1 занести в указатель
-	ptr->show();           //Выполнить show()
-	ptr = &dv2;            //Адрес dv2 занести в указатель
-	ptr->show();           //Выполнить show()
+	ptr = &dv1;            //РђРґСЂРµСЃ dv1 Р·Р°РЅРµСЃС‚Рё РІ СѓРєР°Р·Р°С‚РµР»СЊ
+	ptr->show();           //Р’С‹РїРѕР»РЅРёС‚СЊ show()
+	ptr = &dv2;            //РђРґСЂРµСЃ dv2 Р·Р°РЅРµСЃС‚Рё РІ СѓРєР°Р·Р°С‚РµР»СЊ
+	ptr->show();           //Р’С‹РїРѕР»РЅРёС‚СЊ show()
 	*/
 #pragma endregion
 
-#pragma region Чистая виртуальная функция (3)
+#pragma region Р§РёСЃС‚Р°СЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ (3)
 	/*
-	//Base bad;                 //невозможно создать объект
-	//из абстрактного класса
-	Base* arr[2];              //массив указателей на
-							   //базовый класс
-	Derv1 dv1;                 //Объект производного класса 1
-	Derv2 dv2;                 //Объект производного класса 2
+	//Base bad;                 //РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+	//РёР· Р°Р±СЃС‚СЂР°РєС‚РЅРѕРіРѕ РєР»Р°СЃСЃР°
+	Base* arr[2];              //РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР°
+							   //Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ
+	Derv1 dv1;                 //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 1
+	Derv2 dv2;                 //РћР±СЉРµРєС‚ РїСЂРѕРёР·РІРѕРґРЅРѕРіРѕ РєР»Р°СЃСЃР° 2
 
-	arr[0] = &dv1;             //Занести адрес dv1 в массив
-	arr[1] = &dv2;             //Занести адрес dv2 в массив
+	arr[0] = &dv1;             //Р—Р°РЅРµСЃС‚Рё Р°РґСЂРµСЃ dv1 РІ РјР°СЃСЃРёРІ
+	arr[1] = &dv2;             //Р—Р°РЅРµСЃС‚Рё Р°РґСЂРµСЃ dv2 РІ РјР°СЃСЃРёРІ
 
-	arr[0]->show();            //Выполнить функцию show()
-	arr[1]->show();            //над обоими объектами
+	arr[0]->show();            //Р’С‹РїРѕР»РЅРёС‚СЊ С„СѓРЅРєС†РёСЋ show()
+	arr[1]->show();            //РЅР°Рґ РѕР±РѕРёРјРё РѕР±СЉРµРєС‚Р°РјРё
 	*/
 #pragma endregion
 
-#pragma region Виртуальные функции
+#pragma region Р’РёСЂС‚СѓР°Р»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё
 	
-	person* persPtr[100];  //массив указателей на person
-	int n = 0;            //число людей, внесенных в список char choice;
+	person* persPtr[100];  //РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° person
+	int n = 0;            //С‡РёСЃР»Рѕ Р»СЋРґРµР№, РІРЅРµСЃРµРЅРЅС‹С… РІ СЃРїРёСЃРѕРє char choice;
 	char choice;
 	do {
-		cout << " Учащийся (s) или педагог (p): ";
+		cout << " РЈС‡Р°С‰РёР№СЃСЏ (s) РёР»Рё РїРµРґР°РіРѕРі (p): ";
 		cin >> choice;
-		if (choice == 's')               //Занести нового ученика в массив
+		if (choice == 's')               //Р—Р°РЅРµСЃС‚Рё РЅРѕРІРѕРіРѕ СѓС‡РµРЅРёРєР° РІ РјР°СЃСЃРёРІ
 			persPtr[n] = new student;   
-		else                          //Занести нового педагога в массив
+		else                          //Р—Р°РЅРµСЃС‚Рё РЅРѕРІРѕРіРѕ РїРµРґР°РіРѕРіР° РІ РјР°СЃСЃРёРІ
 			persPtr[n] = new professor; 
-		persPtr[n++]->getData();       //Запрос данных о персоне
-		cout << " Ввести еще персону (y/n)? "; 
+		persPtr[n++]->getData();       //Р—Р°РїСЂРѕСЃ РґР°РЅРЅС‹С… Рѕ РїРµСЂСЃРѕРЅРµ
+		cout << " Р’РІРµСЃС‚Рё РµС‰Рµ РїРµСЂСЃРѕРЅСѓ (y/n)? "; 
 		cin >> choice;
-	} while (choice == 'y');       //цикл, пока ответ 'y'
+	} while (choice == 'y');       //С†РёРєР», РїРѕРєР° РѕС‚РІРµС‚ 'y'
 	for (int j = 0; j<n; j++)
 	{
-		persPtr[j]->putName();        //Вывести все имена,
+		persPtr[j]->putName();        //Р’С‹РІРµСЃС‚Рё РІСЃРµ РёРјРµРЅР°,
 		if (persPtr[j]->isOutstanding())        
-			cout << "  Это выдающийся человек!\n"; //сообщать о выдающихся
+			cout << "  Р­С‚Рѕ РІС‹РґР°СЋС‰РёР№СЃСЏ С‡РµР»РѕРІРµРє!\n"; //СЃРѕРѕР±С‰Р°С‚СЊ Рѕ РІС‹РґР°СЋС‰РёС…СЃСЏ
 	}
 	
 #pragma endregion
 
-#pragma region Виртуальные функции с графикой
+#pragma region Р’РёСЂС‚СѓР°Р»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё СЃ РіСЂР°С„РёРєРѕР№
 	/*
-	init_graphics();             //инициализация графики
-	shape* pShapes[3];           //массив указателей на фигуры
-								 //определить три фигуры
+	init_graphics();             //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіСЂР°С„РёРєРё
+	shape* pShapes[3];           //РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° С„РёРіСѓСЂС‹
+								 //РѕРїСЂРµРґРµР»РёС‚СЊ С‚СЂРё С„РёРіСѓСЂС‹
 	pShapes[0] = new ball(40, 12, 5, cBLUE, X_FILL);
 	pShapes[1] = new rect(12, 7, 10, 15, cRED, SOLID_FILL);
 	pShapes[2] = new tria(60, 7, 11, cGREEN, MEDIUM_FILL);
 
-	for (int j = 0; j<3; j++)           //нарисовать все фигуры
+	for (int j = 0; j<3; j++)           //РЅР°СЂРёСЃРѕРІР°С‚СЊ РІСЃРµ С„РёРіСѓСЂС‹
 		pShapes[j]->draw();
 
-	for (int j = 0; j<3; j++)           //удалить все фигуры
+	for (int j = 0; j<3; j++)           //СѓРґР°Р»РёС‚СЊ РІСЃРµ С„РёРіСѓСЂС‹
 		delete pShapes[j];
 	set_cursor_pos(1, 25);
 	*/
 #pragma endregion
 
-#pragma region Виртуальные деструкторы
+#pragma region Р’РёСЂС‚СѓР°Р»СЊРЅС‹Рµ РґРµСЃС‚СЂСѓРєС‚РѕСЂС‹
 	/*
 	Base* pBase = new Derv;
 	delete pBase;
 	*/
-	//Чтобы быть уверенным, что объекты порожденных классов удаляются 
-	//как нужно, следует делать деструкторы в базовых классах виртуальными
+	//Р§С‚РѕР±С‹ Р±С‹С‚СЊ СѓРІРµСЂРµРЅРЅС‹Рј, С‡С‚Рѕ РѕР±СЉРµРєС‚С‹ РїРѕСЂРѕР¶РґРµРЅРЅС‹С… РєР»Р°СЃСЃРѕРІ СѓРґР°Р»СЏСЋС‚СЃСЏ 
+	//РєР°Рє РЅСѓР¶РЅРѕ, СЃР»РµРґСѓРµС‚ РґРµР»Р°С‚СЊ РґРµСЃС‚СЂСѓРєС‚РѕСЂС‹ РІ Р±Р°Р·РѕРІС‹С… РєР»Р°СЃСЃР°С… РІРёСЂС‚СѓР°Р»СЊРЅС‹РјРё
 	
 #pragma endregion
 
-#pragma region Дружественные функции
+#pragma region Р”СЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
 	/*	
 	alpha aa;
 	beta bb;
 	
-	cout << frifunc(aa, bb) << endl;   //вызов функции
+	cout << frifunc(aa, bb) << endl;   //РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё
 	*/
 #pragma endregion
 
-#pragma region Ограничение перегрузки
+#pragma region РћРіСЂР°РЅРёС‡РµРЅРёРµ РїРµСЂРµРіСЂСѓР·РєРё
 	/*
-	Distance d1 = 2.5;         //конструктор переводит
-	Distance d2 = 1.25;        //float-feet в Distance
+	Distance d1 = 2.5;         //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРµСЂРµРІРѕРґРёС‚
+	Distance d2 = 1.25;        //float-feet РІ Distance
 	Distance d3;
 	cout << "\nd1 = "; d1.showdist();
 	cout << "\nd2 = "; d2.showdist();
 	
 	d3 = d1 + 10.0;            //distance + float: OK
 	cout << "\nd3 = "; d3.showdist();
-	d3 = 10.0 + d1;            //float + Distance: неOK
+	d3 = 10.0 + d1;            //float + Distance: РЅРµOK
 	cout << "\nd3 = "; d3.showdist();
 	cout << endl;
 	*/
 #pragma endregion
 
-#pragma region Еще одна дружественная функция
+#pragma region Р•С‰Рµ РѕРґРЅР° РґСЂСѓР¶РµСЃС‚РІРµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ
 	/*
 	Distance dist(3, 6.0);	
 	float sqft;
 	
-	//sqft = dist.square();	//вычислить квадрат расстояния
-	sqft = square(dist);   //вернуть квадрат dist
-	cout << "\nРасстояние = "; dist.showdist();
-	cout << "\nКвадрат расстояния = " << sqft << " кв. футов\n";
+	//sqft = dist.square();	//РІС‹С‡РёСЃР»РёС‚СЊ РєРІР°РґСЂР°С‚ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ
+	sqft = square(dist);   //РІРµСЂРЅСѓС‚СЊ РєРІР°РґСЂР°С‚ dist
+	cout << "\nР Р°СЃСЃС‚РѕСЏРЅРёРµ = "; dist.showdist();
+	cout << "\nРљРІР°РґСЂР°С‚ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ = " << sqft << " РєРІ. С„СѓС‚РѕРІ\n";
 	*/
 #pragma endregion
 
-#pragma region Дружественные классы
+#pragma region Р”СЂСѓР¶РµСЃС‚РІРµРЅРЅС‹Рµ РєР»Р°СЃСЃС‹
 	/*
 	gamma a;
 	delta b;
@@ -769,7 +769,7 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Статические функции и ID объектов
+#pragma region РЎС‚Р°С‚РёС‡РµСЃРєРёРµ С„СѓРЅРєС†РёРё Рё ID РѕР±СЉРµРєС‚РѕРІ
 	/*
 	tetta g1;
 	tetta::showtotal();
@@ -783,31 +783,31 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Перегрузка оператора присваивания
+#pragma region РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
 	/*
 	alphaq a1(37);
 	alphaq a2;
 	
-	a2 = a1;                       //запуск перегружаемого =
-	cout << "\na2="; a2.display(); //вывести a2
+	a2 = a1;                       //Р·Р°РїСѓСЃРє РїРµСЂРµРіСЂСѓР¶Р°РµРјРѕРіРѕ =
+	cout << "\na2="; a2.display(); //РІС‹РІРµСЃС‚Рё a2
 	
-	alphaq a3 = a2;                 //НЕ запускается - это инициализация
-	cout << "\na3="; a3.display(); //вывести a3
+	alphaq a3 = a2;                 //РќР• Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ - СЌС‚Рѕ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
+	cout << "\na3="; a3.display(); //РІС‹РІРµСЃС‚Рё a3
 	cout << endl;
 	*/
 #pragma endregion
 
-#pragma region Указатель this
+#pragma region РЈРєР°Р·Р°С‚РµР»СЊ this
 	/*
-	where w1, w2, w3;    //создать три объекта
-	w1.reveal();         //посмотреть, где они находятся
+	where w1, w2, w3;    //СЃРѕР·РґР°С‚СЊ С‚СЂРё РѕР±СЉРµРєС‚Р°
+	w1.reveal();         //РїРѕСЃРјРѕС‚СЂРµС‚СЊ, РіРґРµ РѕРЅРё РЅР°С…РѕРґСЏС‚СЃСЏ
 	w2.reveal();
 	w3.reveal();
 	cout << endl;
 	*/
 #pragma endregion
 
-#pragma region Ссылка this на данные
+#pragma region РЎСЃС‹Р»РєР° this РЅР° РґР°РЅРЅС‹Рµ
 	/*
 	what w;
 	w.tester();
@@ -815,14 +815,14 @@ int main()
 	*/
 #pragma endregion
 
-#pragma region Возврат содержимого указателя this
+#pragma region Р’РѕР·РІСЂР°С‚ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ СѓРєР°Р·Р°С‚РµР»СЏ this
 	/*
 	alphathis a1(37);
 	alphathis a2, a3;
 	
-	a3 = a2 = a1;                  // перегружаемый =, дважды
-	cout << "\na2="; a2.display(); // вывести a2
-	cout << "\na3="; a3.display(); // вывести a3
+	a3 = a2 = a1;                  // РїРµСЂРµРіСЂСѓР¶Р°РµРјС‹Р№ =, РґРІР°Р¶РґС‹
+	cout << "\na2="; a2.display(); // РІС‹РІРµСЃС‚Рё a2
+	cout << "\na3="; a3.display(); // РІС‹РІРµСЃС‚Рё a3
 	cout << endl;
 	*/
 #pragma endregion

@@ -1,9 +1,9 @@
-// Lection8.cpp : Defines the entry point for the console application.
+п»ї// Lection8.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
-#include <fstream>      // для файловых функций
-#include <typeinfo>     // для typeid()
+#include <fstream>      // РґР»СЏ С„Р°Р№Р»РѕРІС‹С… С„СѓРЅРєС†РёР№
+#include <typeinfo>     // РґР»СЏ typeid()
 #include <iostream>
 #include <string>
 #include "verylong.h"
@@ -11,174 +11,174 @@
 
 using namespace std;
 
-const int MAX = 100;       // размер буфера
-int buff[MAX];             // буфер для целых чисел
+const int MAX = 100;       // СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
+int buff[MAX];             // Р±СѓС„РµСЂ РґР»СЏ С†РµР»С‹С… С‡РёСЃРµР»
 
-const int LEN = 32;     // Максимальная длина фамилий
-const int MAXEM = 100;  // максимальное число работников
+const int LEN = 32;     // РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° С„Р°РјРёР»РёР№
+const int MAXEM = 100;  // РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ
 
-class person              // класс person
+class person              // РєР»Р°СЃСЃ person
 {
 protected:
-	char name[80];        // имя человека
-	short age;            // возраст
+	char name[80];        // РёРјСЏ С‡РµР»РѕРІРµРєР°
+	short age;            // РІРѕР·СЂР°СЃС‚
 public:
-	void getData()        // получить данные о человеке
+	void getData()        // РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ С‡РµР»РѕРІРµРєРµ
 	{
-		cout << "Введите имя: "; cin >> name;
-		cout << "Введите возраст: "; cin >> age;
+		cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ: "; cin >> name;
+		cout << "Р’РІРµРґРёС‚Рµ РІРѕР·СЂР°СЃС‚: "; cin >> age;
 	}
 
-	void showData()     // вывести данные
+	void showData()     // РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
 	{
-		cout << "Имя: " << name << endl;
-		cout << "Возраст: " << age << endl;
+		cout << "РРјСЏ: " << name << endl;
+		cout << "Р’РѕР·СЂР°СЃС‚: " << age << endl;
 	}
 
-	void diskIn(int pn)  // Чтение данных о числе								 
+	void diskIn(int pn)  // Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… Рѕ С‡РёСЃР»Рµ								 
 	{
-		ifstream infile;           // создать поток
-		infile.open("PERSFILE.DAT", ios::binary);  // открыть его
-		infile.seekg(pn * sizeof(person));         // сдвиг файлового указателя
-		infile.read((char*)this, sizeof(*this)); // чтение данных
-		infile.close();										 // об одном человеке
+		ifstream infile;           // СЃРѕР·РґР°С‚СЊ РїРѕС‚РѕРє
+		infile.open("PERSFILE.DAT", ios::binary);  // РѕС‚РєСЂС‹С‚СЊ РµРіРѕ
+		infile.seekg(pn * sizeof(person));         // СЃРґРІРёРі С„Р°Р№Р»РѕРІРѕРіРѕ СѓРєР°Р·Р°С‚РµР»СЏ
+		infile.read((char*)this, sizeof(*this)); // С‡С‚РµРЅРёРµ РґР°РЅРЅС‹С…
+		infile.close();										 // РѕР± РѕРґРЅРѕРј С‡РµР»РѕРІРµРєРµ
 	}
 	
-	void diskOut()       // запись в конец файла 
+	void diskOut()       // Р·Р°РїРёСЃСЊ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° 
 	{
-		ofstream outfile;          // создать поток
-		outfile.open("PERSFILE.DAT", ios::app | ios::binary);// открыть его
-		outfile.write((char*)this, sizeof(*this)); //записать в него
+		ofstream outfile;          // СЃРѕР·РґР°С‚СЊ РїРѕС‚РѕРє
+		outfile.open("PERSFILE.DAT", ios::app | ios::binary);// РѕС‚РєСЂС‹С‚СЊ РµРіРѕ
+		outfile.write((char*)this, sizeof(*this)); //Р·Р°РїРёСЃР°С‚СЊ РІ РЅРµРіРѕ
 		outfile.close();
 	}
 
-	static int diskCount()      // число людей в файле
+	static int diskCount()      // С‡РёСЃР»Рѕ Р»СЋРґРµР№ РІ С„Р°Р№Р»Рµ
 	{
 		ifstream infile;
 		infile.open("PERSFILE.DAT", ios::binary);
-		infile.seekg(0, ios::end); // перейти на позицию «0 байт от конца файла»
-								   // вычислить количество людей
+		infile.seekg(0, ios::end); // РїРµСЂРµР№С‚Рё РЅР° РїРѕР·РёС†РёСЋ В«0 Р±Р°Р№С‚ РѕС‚ РєРѕРЅС†Р° С„Р°Р№Р»Р°В»
+								   // РІС‹С‡РёСЃР»РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»СЋРґРµР№
 		return (int)infile.tellg() / sizeof(person);
 	}
 
-	//В потоковых функциях адрес объекта будет равен *this,
-	//а его размер sizeof(*this)
+	//Р’ РїРѕС‚РѕРєРѕРІС‹С… С„СѓРЅРєС†РёСЏС… Р°РґСЂРµСЃ РѕР±СЉРµРєС‚Р° Р±СѓРґРµС‚ СЂР°РІРµРЅ *this,
+	//Р° РµРіРѕ СЂР°Р·РјРµСЂ sizeof(*this)
 };
 
 enum employee_type { tmanager, tscientist, tlaborer };
 
-class employee                // класс employee 
+class employee                // РєР»Р°СЃСЃ employee 
 {
 private:
-	char name[LEN];           // фамилия работника
-	unsigned long number;     // номер работника
-	static int n;             // текущее число работников
-	static employee* arrap[]; //массив указателей на класс работников
+	char name[LEN];           // С„Р°РјРёР»РёСЏ СЂР°Р±РѕС‚РЅРёРєР°
+	unsigned long number;     // РЅРѕРјРµСЂ СЂР°Р±РѕС‚РЅРёРєР°
+	static int n;             // С‚РµРєСѓС‰РµРµ С‡РёСЃР»Рѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ
+	static employee* arrap[]; //РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° РєР»Р°СЃСЃ СЂР°Р±РѕС‚РЅРёРєРѕРІ
 public:
 	virtual void getdata()
 	{
-		cout << "  Введите фамилию: "; cin >> name;
-		cout << "  Введите номер: ";    cin >> number;
+		cout << "  Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ: "; cin >> name;
+		cout << "  Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ: ";    cin >> number;
 	}
 	virtual void putdata()
 	{
-		cout << "\n  Фамилия: " << name;
-		cout << "\n  Номер: " << number;
+		cout << "\n  Р¤Р°РјРёР»РёСЏ: " << name;
+		cout << "\n  РќРѕРјРµСЂ: " << number;
 	}
-	virtual employee_type get_type(); // получить тип
-	static void add();                // добавить работника
-	static void display();            // вывести данные обо всех
-	static void read();               // чтение из файла
-	static void write();              // запись в файл
+	virtual employee_type get_type(); // РїРѕР»СѓС‡РёС‚СЊ С‚РёРї
+	static void add();                // РґРѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚РЅРёРєР°
+	static void display();            // РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ РѕР±Рѕ РІСЃРµС…
+	static void read();               // С‡С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р°
+	static void write();              // Р·Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 };
 
-//статические переменные
-int employee::n = 0;              // текущее число работников
-employee* employee::arrap[MAXEM]; // массив указателей на
-								  // класс работников
+//СЃС‚Р°С‚РёС‡РµСЃРєРёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ
+int employee::n = 0;              // С‚РµРєСѓС‰РµРµ С‡РёСЃР»Рѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ
+employee* employee::arrap[MAXEM]; // РјР°СЃСЃРёРІ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР°
+								  // РєР»Р°СЃСЃ СЂР°Р±РѕС‚РЅРёРєРѕРІ
 
-//класс manager (менеджеры)
+//РєР»Р°СЃСЃ manager (РјРµРЅРµРґР¶РµСЂС‹)
 class manager : public employee
 {
 private:
-	char title[LEN];  // титул 
-	double dues;      // Налоги гольф-клуба
+	char title[LEN];  // С‚РёС‚СѓР» 
+	double dues;      // РќР°Р»РѕРіРё РіРѕР»СЊС„-РєР»СѓР±Р°
 public:
 	void getdata()
 	{
 		employee::getdata();
-		cout << "  Введите титул: ";       cin >> title;
-		cout << "  Введите налоги: "; cin >> dues;
+		cout << "  Р’РІРµРґРёС‚Рµ С‚РёС‚СѓР»: ";       cin >> title;
+		cout << "  Р’РІРµРґРёС‚Рµ РЅР°Р»РѕРіРё: "; cin >> dues;
 	}
 	void putdata()
 	{
 		employee::putdata();
-		cout << "\n  Титул: " << title;
-		cout << "\n  Налоги гольф-клуба: " << dues;
+		cout << "\n  РўРёС‚СѓР»: " << title;
+		cout << "\n  РќР°Р»РѕРіРё РіРѕР»СЊС„-РєР»СѓР±Р°: " << dues;
 	}
 };
 
-//класс scientist (ученые)
+//РєР»Р°СЃСЃ scientist (СѓС‡РµРЅС‹Рµ)
 class scientist : public employee
 {
 private:
-	int pubs;              // число публикаций
+	int pubs;              // С‡РёСЃР»Рѕ РїСѓР±Р»РёРєР°С†РёР№
 public:
 	void getdata()
 	{
 		employee::getdata();
-		cout << "  Введите число публикаций: "; cin >> pubs;
+		cout << "  Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РїСѓР±Р»РёРєР°С†РёР№: "; cin >> pubs;
 	}
 	void putdata()
 	{
 		employee::putdata();
-		cout << "\n  Число публикаций: " << pubs;
+		cout << "\n  Р§РёСЃР»Рѕ РїСѓР±Р»РёРєР°С†РёР№: " << pubs;
 	}
 };
 
-//класс laborer (рабочие)
+//РєР»Р°СЃСЃ laborer (СЂР°Р±РѕС‡РёРµ)
 class laborer : public employee
 {
 };
 
-//добавить работника в список (хранится в ОП)
+//РґРѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚РЅРёРєР° РІ СЃРїРёСЃРѕРє (С…СЂР°РЅРёС‚СЃСЏ РІ РћРџ)
 void employee::add()
 {
 	char ch;
-	cout << "'m' для добавления менеджера"
-			"\n's' для добавления ученого"
-			"\n'l' для добавления рабочего"
-			"\nВаш выбор: ";
+	cout << "'m' РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РјРµРЅРµРґР¶РµСЂР°"
+			"\n's' РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СѓС‡РµРЅРѕРіРѕ"
+			"\n'l' РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Р±РѕС‡РµРіРѕ"
+			"\nР’Р°С€ РІС‹Р±РѕСЂ: ";
 	cin >> ch;
 	switch (ch)
-	{ //создать объект указанного типа
+	{ //СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С‚РёРїР°
 	case 'm': arrap[n] = new manager;  break;
 	case 's': arrap[n] = new scientist; break;
 	case 'l': arrap[n] = new laborer;  break;
-	default: cout << "\nНеизвестный тип работника\n"; return;
+	default: cout << "\nРќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї СЂР°Р±РѕС‚РЅРёРєР°\n"; return;
 	}
-	arrap[n++]->getdata();  //Получить данные от пользователя
+	arrap[n++]->getdata();  //РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 }
 
-//Вывести данные обо всех работниках
+//Р’С‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ РѕР±Рѕ РІСЃРµС… СЂР°Р±РѕС‚РЅРёРєР°С…
 void employee::display()
 {
 	for (int j = 0; j<n; j++)
 	{
-		cout << (j + 1);                // вывести номер
-		switch (arrap[j]->get_type()) //вывести тип 
+		cout << (j + 1);                // РІС‹РІРµСЃС‚Рё РЅРѕРјРµСЂ
+		switch (arrap[j]->get_type()) //РІС‹РІРµСЃС‚Рё С‚РёРї 
 		{
-		case tmanager:  cout << ". Тип: Менеджер";  break;
-		case tscientist: cout << ". Тип: Ученый"; break;
-		case tlaborer:   cout << ". Тип: Рабочий";  break;
-		default: cout << ". Неизвестный тип";
+		case tmanager:  cout << ". РўРёРї: РњРµРЅРµРґР¶РµСЂ";  break;
+		case tscientist: cout << ". РўРёРї: РЈС‡РµРЅС‹Р№"; break;
+		case tlaborer:   cout << ". РўРёРї: Р Р°Р±РѕС‡РёР№";  break;
+		default: cout << ". РќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї";
 		}
-		arrap[j]->putdata();           // Вывод данных
+		arrap[j]->putdata();           // Р’С‹РІРѕРґ РґР°РЅРЅС‹С…
 		cout << endl;
 	}
 }
 
-//Возврат типа объекта
+//Р’РѕР·РІСЂР°С‚ С‚РёРїР° РѕР±СЉРµРєС‚Р°
 employee_type employee::get_type()
 {
 	if (typeid(*this) == typeid(manager))
@@ -189,67 +189,67 @@ employee_type employee::get_type()
 		return tlaborer;
 	else
 	{
-		cerr << "\nНеправильный тип работника"; exit(1);
+		cerr << "\nРќРµРїСЂР°РІРёР»СЊРЅС‹Р№ С‚РёРї СЂР°Р±РѕС‚РЅРёРєР°"; exit(1);
 	}
 	return tmanager;
 }
 
-//Записать все объекты, хранящиеся в памяти, в файл
+//Р—Р°РїРёСЃР°С‚СЊ РІСЃРµ РѕР±СЉРµРєС‚С‹, С…СЂР°РЅСЏС‰РёРµСЃСЏ РІ РїР°РјСЏС‚Рё, РІ С„Р°Р№Р»
 void employee::write()
 {
 	int size;
-	cout << "Идет запись " << n << " работников.\n";
-	ofstream ouf;           // открыть ofstream в двоичном виде
-	employee_type etype;   // тип каждого объекта employee
+	cout << "РРґРµС‚ Р·Р°РїРёСЃСЊ " << n << " СЂР°Р±РѕС‚РЅРёРєРѕРІ.\n";
+	ofstream ouf;           // РѕС‚РєСЂС‹С‚СЊ ofstream РІ РґРІРѕРёС‡РЅРѕРј РІРёРґРµ
+	employee_type etype;   // С‚РёРї РєР°Р¶РґРѕРіРѕ РѕР±СЉРµРєС‚Р° employee
 
 	ouf.open("EMPLOY.DAT", ios::trunc | ios::binary);
 	if (!ouf)
 	{
-		cout << "\nНевозможно открыть файл\n"; return;
+		cout << "\nРќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»\n"; return;
 	}
-	for (int j = 0; j<n; j++)  // Для каждого объекта
-	{                     // получить его тип
+	for (int j = 0; j<n; j++)  // Р”Р»СЏ РєР°Р¶РґРѕРіРѕ РѕР±СЉРµРєС‚Р°
+	{                     // РїРѕР»СѓС‡РёС‚СЊ РµРіРѕ С‚РёРї
 		etype = arrap[j]->get_type();
-		// записать данные в файл
+		// Р·Р°РїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р»
 		ouf.write((char*)&etype, sizeof(etype));
 		switch (etype)         // find its size
 		{
 		case tmanager:  size = sizeof(manager); break;
 		case tscientist: size = sizeof(scientist); break;
 		case tlaborer:  size = sizeof(laborer); break;
-		}      //запись объекта employee в файл    
+		}      //Р·Р°РїРёСЃСЊ РѕР±СЉРµРєС‚Р° employee РІ С„Р°Р№Р»    
 		ouf.write( (char*)(arrap[j]), size );
 		if (!ouf)
 		{
-			cout << "\nЗапись в файл невозможна\n"; return;
+			cout << "\nР—Р°РїРёСЃСЊ РІ С„Р°Р№Р» РЅРµРІРѕР·РјРѕР¶РЅР°\n"; return;
 		}
 	}
 }
 
-//чтение всех данных из файла в память
+//С‡С‚РµРЅРёРµ РІСЃРµС… РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° РІ РїР°РјСЏС‚СЊ
 void employee::read()
 {
-	int size;               // размер объекта employee 
-	employee_type etype;    // тип работника
-	ifstream inf;           // открыть ifstream в двоичном виде
+	int size;               // СЂР°Р·РјРµСЂ РѕР±СЉРµРєС‚Р° employee 
+	employee_type etype;    // С‚РёРї СЂР°Р±РѕС‚РЅРёРєР°
+	ifstream inf;           // РѕС‚РєСЂС‹С‚СЊ ifstream РІ РґРІРѕРёС‡РЅРѕРј РІРёРґРµ
 	inf.open("EMPLOY.DAT", ios::binary);
 	if (!inf)
 	{
-		cout << "\nНевозможно открыть файл\n"; return;
+		cout << "\nРќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»\n"; return;
 	}
-	n = 0;                  // В памяти работников нет
+	n = 0;                  // Р’ РїР°РјСЏС‚Рё СЂР°Р±РѕС‚РЅРёРєРѕРІ РЅРµС‚
 	while (true)
-	{                     // чтение типа следующего работника
+	{                     // С‡С‚РµРЅРёРµ С‚РёРїР° СЃР»РµРґСѓСЋС‰РµРіРѕ СЂР°Р±РѕС‚РЅРёРєР°
 		inf.read((char*)&etype, sizeof(etype));
-		if (inf.eof())       // выход из цикла по EOF
+		if (inf.eof())       // РІС‹С…РѕРґ РёР· С†РёРєР»Р° РїРѕ EOF
 			break;
-		if (!inf)              // ошибка чтения типа
+		if (!inf)              // РѕС€РёР±РєР° С‡С‚РµРЅРёСЏ С‚РёРїР°
 		{
-			cout << "\nНевозможно чтение типа\n"; return;
+			cout << "\nРќРµРІРѕР·РјРѕР¶РЅРѕ С‡С‚РµРЅРёРµ С‚РёРїР°\n"; return;
 		}
 		switch (etype)
-		{                   // создать нового работника
-		case tmanager:      // корректного типа
+		{                   // СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРіРѕ СЂР°Р±РѕС‚РЅРёРєР°
+		case tmanager:      // РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ С‚РёРїР°
 			arrap[n] = new manager;
 			size = sizeof(manager);
 			break;
@@ -261,16 +261,16 @@ void employee::read()
 			arrap[n] = new laborer;
 			size = sizeof(laborer);
 			break;
-		default: cout << "\nНеизвестный тип в файле\n"; return;
-		}                   // чтение данных из файла
+		default: cout << "\nРќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї РІ С„Р°Р№Р»Рµ\n"; return;
+		}                   // С‡С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 		inf.read((char*)arrap[n], size);
-		if (!inf)              // ошибка, но не EOF
+		if (!inf)              // РѕС€РёР±РєР°, РЅРѕ РЅРµ EOF
 		{
-			cout << "\nЧтение данных из файла невозможно\n"; return;
+			cout << "\nР§С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° РЅРµРІРѕР·РјРѕР¶РЅРѕ\n"; return;
 		}
-		n++;                  // счетчик работников увеличить
+		n++;                  // СЃС‡РµС‚С‡РёРє СЂР°Р±РѕС‚РЅРёРєРѕРІ СѓРІРµР»РёС‡РёС‚СЊ
 	}  
-	cout << "Идет чтение " << n << " работников\n";
+	cout << "РРґРµС‚ С‡С‚РµРЅРёРµ " << n << " СЂР°Р±РѕС‚РЅРёРєРѕРІ\n";
 }
 
 class Distance
@@ -287,13 +287,13 @@ public:
 	friend ostream& operator << (ostream& s, Distance& d);
 };
 
-istream& operator >> (istream& s, Distance& d) //получить значение
+istream& operator >> (istream& s, Distance& d) //РїРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ
 {
-	cout << "\nВведите футы: ";  s >> d.feet;  
-	cout << "Введите дюймы: ";  s >> d.inches; 
+	cout << "\nР’РІРµРґРёС‚Рµ С„СѓС‚С‹: ";  s >> d.feet;  
+	cout << "Р’РІРµРґРёС‚Рµ РґСЋР№РјС‹: ";  s >> d.inches; 
 	return s;                                  
 }
-ostream& operator << (ostream& s, Distance& d) // вывести
+ostream& operator << (ostream& s, Distance& d) // РІС‹РІРµСЃС‚Рё
 {                                         
 	s << d.feet << "\'-" << d.inches << '\"'; 
 	return s;                                 
@@ -302,7 +302,7 @@ ostream& operator << (ostream& s, Distance& d) // вывести
 /*
 istream& operator >> (istream& s, Distance& d) 
 {  
-	char dummy;       // для ('), (-) и (")
+	char dummy;       // РґР»СЏ ('), (-) Рё (")
 	s >> d.feet >> dummy >> dummy >> d.inches >> dummy;
 	return s;
 }
@@ -316,244 +316,244 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	#pragma region Файловый ввод строк с пробелами
+	#pragma region Р¤Р°Р№Р»РѕРІС‹Р№ РІРІРѕРґ СЃС‚СЂРѕРє СЃ РїСЂРѕР±РµР»Р°РјРё
 		/*
-		ofstream outfile("TES.TXT"); // создать выходной файл 
-									  // отправить текст в файл
-		outfile << "Первая строка.\n";
-		outfile << "Вторая строка.\n";
-		outfile << "Третья строка.\n";
-		outfile << "Четвертая строка.\n";
+		ofstream outfile("TES.TXT"); // СЃРѕР·РґР°С‚СЊ РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р» 
+									  // РѕС‚РїСЂР°РІРёС‚СЊ С‚РµРєСЃС‚ РІ С„Р°Р№Р»
+		outfile << "РџРµСЂРІР°СЏ СЃС‚СЂРѕРєР°.\n";
+		outfile << "Р’С‚РѕСЂР°СЏ СЃС‚СЂРѕРєР°.\n";
+		outfile << "РўСЂРµС‚СЊСЏ СЃС‚СЂРѕРєР°.\n";
+		outfile << "Р§РµС‚РІРµСЂС‚Р°СЏ СЃС‚СЂРѕРєР°.\n";
 
 		outfile.close();
 		*/
 		
 	#pragma endregion
 
-	#pragma region Файловый вывод строк с пробелами
+	#pragma region Р¤Р°Р№Р»РѕРІС‹Р№ РІС‹РІРѕРґ СЃС‚СЂРѕРє СЃ РїСЂРѕР±РµР»Р°РјРё
 		/*
-		const int MAX = 80;          // размер буфера
-		char buffer[MAX];            // буфер символов 
-		ifstream infile("TEST.TXT"); // открытие входного файла
-		while (!infile.eof())        // цикл до EOF
+		const int MAX = 80;          // СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
+		char buffer[MAX];            // Р±СѓС„РµСЂ СЃРёРјРІРѕР»РѕРІ 
+		ifstream infile("TEST.TXT"); // РѕС‚РєСЂС‹С‚РёРµ РІС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
+		while (!infile.eof())        // С†РёРєР» РґРѕ EOF
 		{
-			infile.getline(buffer, MAX); // читает строку текста
-			cout << buffer << endl;      // и выводит ее
+			infile.getline(buffer, MAX); // С‡РёС‚Р°РµС‚ СЃС‚СЂРѕРєСѓ С‚РµРєСЃС‚Р°
+			cout << buffer << endl;      // Рё РІС‹РІРѕРґРёС‚ РµРµ
 		}
 		*/
 	#pragma endregion
 
-	#pragma region Посимвольный файловый ввод
+	#pragma region РџРѕСЃРёРјРІРѕР»СЊРЅС‹Р№ С„Р°Р№Р»РѕРІС‹Р№ РІРІРѕРґ
 		/*
-		string str = "Время – великий учитель, но, увы, "
-			"оно убивает своих учеников.  Берлиоз";
+		string str = "Р’СЂРµРјСЏ вЂ“ РІРµР»РёРєРёР№ СѓС‡РёС‚РµР»СЊ, РЅРѕ, СѓРІС‹, "
+			"РѕРЅРѕ СѓР±РёРІР°РµС‚ СЃРІРѕРёС… СѓС‡РµРЅРёРєРѕРІ.  Р‘РµСЂР»РёРѕР·";
 
-		ofstream outfile("TEST.TXT");   // Привязываем к потоку ofstream выходной файл
-		for (int j = 0; j < str.size(); j++) // каждый символ
-			//outfile.put(str[j]);        // записывать в файл
+		ofstream outfile("TEST.TXT");   // РџСЂРёРІСЏР·С‹РІР°РµРј Рє РїРѕС‚РѕРєСѓ ofstream РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р»
+		for (int j = 0; j < str.size(); j++) // РєР°Р¶РґС‹Р№ СЃРёРјРІРѕР»
+			//outfile.put(str[j]);        // Р·Р°РїРёСЃС‹РІР°С‚СЊ РІ С„Р°Р№Р»
 			outfile << str[j];
-		cout << "Файл записан\n";
+		cout << "Р¤Р°Р№Р» Р·Р°РїРёСЃР°РЅ\n";
 		*/
 	#pragma endregion
 
-	#pragma region Посимвольный файловый вывод
+	#pragma region РџРѕСЃРёРјРІРѕР»СЊРЅС‹Р№ С„Р°Р№Р»РѕРІС‹Р№ РІС‹РІРѕРґ
 		/*
-		char ch;                     // символ для считывания
-		ifstream infile("TEST.TXT"); // входной файл
-		while (infile)              // читать до EOF или ошибки
+		char ch;                     // СЃРёРјРІРѕР» РґР»СЏ СЃС‡РёС‚С‹РІР°РЅРёСЏ
+		ifstream infile("TEST.TXT"); // РІС…РѕРґРЅРѕР№ С„Р°Р№Р»
+		while (infile)              // С‡РёС‚Р°С‚СЊ РґРѕ EOF РёР»Рё РѕС€РёР±РєРё
 		{
-			infile.get(ch);            // считать символ
-			cout << ch;                // и вывести его
+			infile.get(ch);            // СЃС‡РёС‚Р°С‚СЊ СЃРёРјРІРѕР»
+			cout << ch;                // Рё РІС‹РІРµСЃС‚Рё РµРіРѕ
 		}
 		cout << endl;
 		*/
 
 		/*
-		ifstream infile("TEST.TXT"); // создать входной файл
+		ifstream infile("TEST.TXT"); // СЃРѕР·РґР°С‚СЊ РІС…РѕРґРЅРѕР№ С„Р°Р№Р»
 
-		cout << infile.rdbuf();      // передать его буфер в cout
+		cout << infile.rdbuf();      // РїРµСЂРµРґР°С‚СЊ РµРіРѕ Р±СѓС„РµСЂ РІ cout
 		cout << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Двоичный ввод/вывод целочисленных данных
+	#pragma region Р”РІРѕРёС‡РЅС‹Р№ РІРІРѕРґ/РІС‹РІРѕРґ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹С… РґР°РЅРЅС‹С…
 		/*
-		for (int j = 0; j< MAX; j++) // заполнить буфер данными
+		for (int j = 0; j< MAX; j++) // Р·Р°РїРѕР»РЅРёС‚СЊ Р±СѓС„РµСЂ РґР°РЅРЅС‹РјРё
 			buff[j] = j;           // (0, 1, 2, ...)
-								   // создать выходной поток
+								   // СЃРѕР·РґР°С‚СЊ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		ofstream os("edata.dat", ios::binary);
-		// записать в него
+		// Р·Р°РїРёСЃР°С‚СЊ РІ РЅРµРіРѕ
 		os.write(reinterpret_cast<char*>(buff), MAX * sizeof(int));
-		os.close();              // должен закрыть его
+		os.close();              // РґРѕР»Р¶РµРЅ Р·Р°РєСЂС‹С‚СЊ РµРіРѕ
 
-		for (int j = 0; j<MAX; j++)     // стереть буфер
+		for (int j = 0; j<MAX; j++)     // СЃС‚РµСЂРµС‚СЊ Р±СѓС„РµСЂ
 			buff[j] = 0;
-		// создать входной поток
+		// СЃРѕР·РґР°С‚СЊ РІС…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		ifstream is("edata.dat", ios::binary);
-		// читать из него
+		// С‡РёС‚Р°С‚СЊ РёР· РЅРµРіРѕ
 		is.read(reinterpret_cast<char*>(buff), MAX * sizeof(int));
 
-		for (int j = 0; j<MAX; j++)     // проверка данных
+		for (int j = 0; j<MAX; j++)     // РїСЂРѕРІРµСЂРєР° РґР°РЅРЅС‹С…
 			if (buff[j] != j)
 			{
-				cerr << "Некорректные данные!\n"; return 1;
+				cerr << "РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ!\n"; return 1;
 			}
-		cout << "Данные корректны\n";
+		cout << "Р”Р°РЅРЅС‹Рµ РєРѕСЂСЂРµРєС‚РЅС‹\n";
 		*/
-		//reinterpret_cast - изменяет тип данных в области памяти,
-		//совершенно не задумываясь имеет ли это смысл
-		//Нужно для того, чтобы буфер данных типа int,
-		//выглядел для функций read() и write(), как буфер типа char
+		//reinterpret_cast - РёР·РјРµРЅСЏРµС‚ С‚РёРї РґР°РЅРЅС‹С… РІ РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё,
+		//СЃРѕРІРµСЂС€РµРЅРЅРѕ РЅРµ Р·Р°РґСѓРјС‹РІР°СЏСЃСЊ РёРјРµРµС‚ Р»Рё СЌС‚Рѕ СЃРјС‹СЃР»
+		//РќСѓР¶РЅРѕ РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ Р±СѓС„РµСЂ РґР°РЅРЅС‹С… С‚РёРїР° int,
+		//РІС‹РіР»СЏРґРµР» РґР»СЏ С„СѓРЅРєС†РёР№ read() Рё write(), РєР°Рє Р±СѓС„РµСЂ С‚РёРїР° char
 		/*
-		Биты режима:
-		in - открытие для чтения(ifstream)
-		out - открытие для записи(ofstream)
-		ate - чтение с конца файла
-		app - запись с конца файла
-		trunc - обрезать файл до нулевой длины, если он существует
-		nocreate - не открывать несуществующий файл
-		noreplace - не открывать для вывода существующий файл, если не установлены ate и app
-		binary - открыть в бинарном режиме
+		Р‘РёС‚С‹ СЂРµР¶РёРјР°:
+		in - РѕС‚РєСЂС‹С‚РёРµ РґР»СЏ С‡С‚РµРЅРёСЏ(ifstream)
+		out - РѕС‚РєСЂС‹С‚РёРµ РґР»СЏ Р·Р°РїРёСЃРё(ofstream)
+		ate - С‡С‚РµРЅРёРµ СЃ РєРѕРЅС†Р° С„Р°Р№Р»Р°
+		app - Р·Р°РїРёСЃСЊ СЃ РєРѕРЅС†Р° С„Р°Р№Р»Р°
+		trunc - РѕР±СЂРµР·Р°С‚СЊ С„Р°Р№Р» РґРѕ РЅСѓР»РµРІРѕР№ РґР»РёРЅС‹, РµСЃР»Рё РѕРЅ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+		nocreate - РЅРµ РѕС‚РєСЂС‹РІР°С‚СЊ РЅРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р»
+		noreplace - РЅРµ РѕС‚РєСЂС‹РІР°С‚СЊ РґР»СЏ РІС‹РІРѕРґР° СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р», РµСЃР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ ate Рё app
+		binary - РѕС‚РєСЂС‹С‚СЊ РІ Р±РёРЅР°СЂРЅРѕРј СЂРµР¶РёРјРµ
 		*/
 		
 	#pragma endregion
 
-	#pragma region Сохранение объектов в файле
+	#pragma region РЎРѕС…СЂР°РЅРµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ РІ С„Р°Р№Р»Рµ
 		/*
-		person pers;            // создать объект
-		pers.getData();         // получить данные
-								// создать объект ofstream
+		person pers;            // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+		pers.getData();         // РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ
+								// СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ ofstream
 		ofstream os("PERSON.DAT", ios::binary);
-		// записать в него
+		// Р·Р°РїРёСЃР°С‚СЊ РІ РЅРµРіРѕ
 		os.write(reinterpret_cast<char*>(&pers), sizeof(person));
 		os.close();
 		*/
 	#pragma endregion
 
-	#pragma region Чтение объекта из файла
+	#pragma region Р§С‚РµРЅРёРµ РѕР±СЉРµРєС‚Р° РёР· С„Р°Р№Р»Р°
 		/*
-		person pers;          // переменная типа person
-		ifstream is("PERSON.DAT", ios::binary);// создать поток
-												   // чтение потока
+		person pers;          // РїРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° person
+		ifstream is("PERSON.DAT", ios::binary);// СЃРѕР·РґР°С‚СЊ РїРѕС‚РѕРє
+												   // С‡С‚РµРЅРёРµ РїРѕС‚РѕРєР°
 		is.read(reinterpret_cast<char*>(&pers), sizeof(pers));
-		pers.showData();      // вывести данные
+		pers.showData();      // РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
 		is.close();
 		*/
 	#pragma endregion
 
-	#pragma region Чтение из файла и запись нескольких объектов
+	#pragma region Р§С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р° Рё Р·Р°РїРёСЃСЊ РЅРµСЃРєРѕР»СЊРєРёС… РѕР±СЉРµРєС‚РѕРІ
 		/*
 		char ch;
-		person pers;          // создать объект person
-		fstream file;         // создать входной/выходной файл
-							  // открыть для дозаписи
+		person pers;          // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ person
+		fstream file;         // СЃРѕР·РґР°С‚СЊ РІС…РѕРґРЅРѕР№/РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р»
+							  // РѕС‚РєСЂС‹С‚СЊ РґР»СЏ РґРѕР·Р°РїРёСЃРё
 		file.open("GROUP.DAT", ios::app | ios::out | ios::in | ios::binary);
 
-		do                    // данные от пользователя – в файл
+		do                    // РґР°РЅРЅС‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ вЂ“ РІ С„Р°Р№Р»
 		{
-			cout << "\nВведите данные о человеке:\n";
-			pers.getData();     // получить данные
-								// записать их в файл
+			cout << "\nР’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ Рѕ С‡РµР»РѕРІРµРєРµ:\n";
+			pers.getData();     // РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ
+								// Р·Р°РїРёСЃР°С‚СЊ РёС… РІ С„Р°Р№Р»
 			file.write(reinterpret_cast<char*>(&pers), sizeof(pers));
-			cout << "Продолжить ввод (y/n)? ";
+			cout << "РџСЂРѕРґРѕР»Р¶РёС‚СЊ РІРІРѕРґ (y/n)? ";
 			cin >> ch;
-		} while (ch == 'y');       // выход по 'n'
-		file.seekg(0);        // поставить указатель на начало файла
-							  // считать данные о первом человеке
+		} while (ch == 'y');       // РІС‹С…РѕРґ РїРѕ 'n'
+		file.seekg(0);        // РїРѕСЃС‚Р°РІРёС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°
+							  // СЃС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ Рѕ РїРµСЂРІРѕРј С‡РµР»РѕРІРµРєРµ
 		file.read(reinterpret_cast<char*>(&pers), sizeof(pers));
-		while (!file.eof())  // Выход по EOF
+		while (!file.eof())  // Р’С‹С…РѕРґ РїРѕ EOF
 		{
-			cout << "\nПерсона:\n"; //вывести данные
-			pers.showData();      //считать данные о следующем
+			cout << "\nРџРµСЂСЃРѕРЅР°:\n"; //РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
+			pers.showData();      //СЃС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Рµ Рѕ СЃР»РµРґСѓСЋС‰РµРј
 			file.read(reinterpret_cast<char*>(&pers), sizeof(pers));
 		}
 		cout << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Поиск конкретного объекта в файле
+	#pragma region РџРѕРёСЃРє РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РѕР±СЉРµРєС‚Р° РІ С„Р°Р№Р»Рµ
 		/*
-		person pers;                  // создать объект person 
-		ifstream is;				// создать входной файл
-		is.open("GROUP.DAT", ios::in | ios::binary); // открыть файл
-		is.seekg(0, ios::end);    // установить указатель на 0 байт от конца файла
-		int endposition = is.tellg();      // найти позицию (tellg - возврат текущей позиции указателя)
-		int n = endposition / sizeof(person);  // число человек
-		cout << "\nВ файле " << n << " человек(а)";
+		person pers;                  // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ person 
+		ifstream is;				// СЃРѕР·РґР°С‚СЊ РІС…РѕРґРЅРѕР№ С„Р°Р№Р»
+		is.open("GROUP.DAT", ios::in | ios::binary); // РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»
+		is.seekg(0, ios::end);    // СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° 0 Р±Р°Р№С‚ РѕС‚ РєРѕРЅС†Р° С„Р°Р№Р»Р°
+		int endposition = is.tellg();      // РЅР°Р№С‚Рё РїРѕР·РёС†РёСЋ (tellg - РІРѕР·РІСЂР°С‚ С‚РµРєСѓС‰РµР№ РїРѕР·РёС†РёРё СѓРєР°Р·Р°С‚РµР»СЏ)
+		int n = endposition / sizeof(person);  // С‡РёСЃР»Рѕ С‡РµР»РѕРІРµРє
+		cout << "\nР’ С„Р°Р№Р»Рµ " << n << " С‡РµР»РѕРІРµРє(Р°)";
 		
-		cout << "\nВведите номер персоны: ";
+		cout << "\nР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РїРµСЂСЃРѕРЅС‹: ";
 		cin >> n;
-		int position = (n - 1) * sizeof(person); // умножить размер
-												 // данных под персону на число персон
-		is.seekg(position);               // число байт от начала
-											  // прочитать одну персону
+		int position = (n - 1) * sizeof(person); // СѓРјРЅРѕР¶РёС‚СЊ СЂР°Р·РјРµСЂ
+												 // РґР°РЅРЅС‹С… РїРѕРґ РїРµСЂСЃРѕРЅСѓ РЅР° С‡РёСЃР»Рѕ РїРµСЂСЃРѕРЅ
+		is.seekg(position);               // С‡РёСЃР»Рѕ Р±Р°Р№С‚ РѕС‚ РЅР°С‡Р°Р»Р°
+											  // РїСЂРѕС‡РёС‚Р°С‚СЊ РѕРґРЅСѓ РїРµСЂСЃРѕРЅСѓ
 		is.read(reinterpret_cast<char*>(&pers), sizeof(pers));
-		pers.showData();                      //вывести одну персону
+		pers.showData();                      //РІС‹РІРµСЃС‚Рё РѕРґРЅСѓ РїРµСЂСЃРѕРЅСѓ
 		cout << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Обработка ошибок ввода/вывода
+	#pragma region РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє РІРІРѕРґР°/РІС‹РІРѕРґР°
 		/*
-		for (int j = 0; j<MAX; j++)    // заполнить буфер данными
+		for (int j = 0; j<MAX; j++)    // Р·Р°РїРѕР»РЅРёС‚СЊ Р±СѓС„РµСЂ РґР°РЅРЅС‹РјРё
 			buff[j] = j;
-		ofstream os;                // создать выходной поток
-									// открыть его
+		ofstream os;                // СЃРѕР·РґР°С‚СЊ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
+									// РѕС‚РєСЂС‹С‚СЊ РµРіРѕ
 		os.open("edata.dat", ios::trunc | ios::binary);
 		if (!os)
 		{
-			cout << "Невозможно открыть выходной файл\n"; 
+			cout << "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р»\n"; 
 			system("pause");
 			exit(1);
 		}
 		
-		cout << "Идет запись...\n"; // записать в него содержимое
-									// буфера
+		cout << "РРґРµС‚ Р·Р°РїРёСЃСЊ...\n"; // Р·Р°РїРёСЃР°С‚СЊ РІ РЅРµРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРµ
+									// Р±СѓС„РµСЂР°
 		os.write(reinterpret_cast<char*>(buff), MAX * sizeof(int));
 		if (!os)
 		{
-			cout << "Запись в файл невозможна\n";
+			cout << "Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» РЅРµРІРѕР·РјРѕР¶РЅР°\n";
 			system("pause");
 			exit(2);
 		}
-		os.close();                 // надо закрыть поток
+		os.close();                 // РЅР°РґРѕ Р·Р°РєСЂС‹С‚СЊ РїРѕС‚РѕРє
 		
-		for (int j = 0; j<MAX; j++)        // очистить буфер
+		for (int j = 0; j<MAX; j++)        // РѕС‡РёСЃС‚РёС‚СЊ Р±СѓС„РµСЂ
 			buff[j] = 0;
 		
-		ifstream is;                // создать входной поток
+		ifstream is;                // СЃРѕР·РґР°С‚СЊ РІС…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		is.open("edata.dat", ios::binary);
 		if (!is)
 		{
-			cerr << "Невозможно открыть входной файл\n"; exit(1);
+			cerr << "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ РІС…РѕРґРЅРѕР№ С„Р°Р№Р»\n"; exit(1);
 		}
 		
-		cout << "Идет чтение...\n"; // чтение файла
+		cout << "РРґРµС‚ С‡С‚РµРЅРёРµ...\n"; // С‡С‚РµРЅРёРµ С„Р°Р№Р»Р°
 		is.read(reinterpret_cast<char*>(buff), MAX * sizeof(int));
 		if (!is)
 		{
-			cerr << "Невозможно чтение файла\n"; exit(1);
+			cerr << "РќРµРІРѕР·РјРѕР¶РЅРѕ С‡С‚РµРЅРёРµ С„Р°Р№Р»Р°\n"; exit(1);
 		}
 		
-		for (int j = 0; j<MAX; j++)        // проверять данные
+		for (int j = 0; j<MAX; j++)        // РїСЂРѕРІРµСЂСЏС‚СЊ РґР°РЅРЅС‹Рµ
 			if (buff[j] != j)
 			{
-				cerr << "\nДанные некорректны\n"; exit(1);
+				cerr << "\nР”Р°РЅРЅС‹Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹\n"; exit(1);
 			}
-		cout << "Данные в порядке\n";
+		cout << "Р”Р°РЅРЅС‹Рµ РІ РїРѕСЂСЏРґРєРµ\n";
 		*/
 	#pragma endregion
 
-	#pragma region Проверка ошибок открытия файла
+	#pragma region РџСЂРѕРІРµСЂРєР° РѕС€РёР±РѕРє РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°
 		/*
 		ifstream file;
 		file.open("edata.dat");
 		
 		if (!file)
-		cout << "\nНевозможно открыть GROUP.DAT";
+		cout << "\nРќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ GROUP.DAT";
 		else
-		cout << "\nФайл открыт без ошибок.";
-		cout << "\nКод ошибки = " << file.rdstate();
+		cout << "\nР¤Р°Р№Р» РѕС‚РєСЂС‹С‚ Р±РµР· РѕС€РёР±РѕРє.";
+		cout << "\nРљРѕРґ РѕС€РёР±РєРё = " << file.rdstate();
 		cout << "\ngood() = " << file.good();
 		cout << "\neof() = " << file.eof();
 		cout << "\nfail() = " << file.fail();
@@ -562,98 +562,98 @@ int main()
 		*/
 	#pragma endregion
 
-	#pragma region Файловый ввод/вывод объектов person
+	#pragma region Р¤Р°Р№Р»РѕРІС‹Р№ РІРІРѕРґ/РІС‹РІРѕРґ РѕР±СЉРµРєС‚РѕРІ person
 		/*
-		person p;                  // создать пустую запись
+		person p;                  // СЃРѕР·РґР°С‚СЊ РїСѓСЃС‚СѓСЋ Р·Р°РїРёСЃСЊ
 		char ch;
 		
-		do {                       // сохранение данных на диск
-			cout << "Введите данные о человеке: ";
-			p.getData();             // Получить данные
-			p.diskOut();             // записать на диск
-			cout << "Продолжить (y/n)? ";
+		do {                       // СЃРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РЅР° РґРёСЃРє
+			cout << "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ Рѕ С‡РµР»РѕРІРµРєРµ: ";
+			p.getData();             // РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ
+			p.diskOut();             // Р·Р°РїРёСЃР°С‚СЊ РЅР° РґРёСЃРє
+			cout << "РџСЂРѕРґРѕР»Р¶РёС‚СЊ (y/n)? ";
 			cin >> ch;
-		} while (ch == 'y');       // цикл до 'n'
+		} while (ch == 'y');       // С†РёРєР» РґРѕ 'n'
 		
-		int n = person::diskCount(); // сколько людей в файле?
-		cout << "В файле " << n << " человек(а)\n";
-		for (int j = 0; j<n; j++)       // для каждого
+		int n = person::diskCount(); // СЃРєРѕР»СЊРєРѕ Р»СЋРґРµР№ РІ С„Р°Р№Р»Рµ?
+		cout << "Р’ С„Р°Р№Р»Рµ " << n << " С‡РµР»РѕРІРµРє(Р°)\n";
+		for (int j = 0; j<n; j++)       // РґР»СЏ РєР°Р¶РґРѕРіРѕ
 		{
-			cout << "\nПерсона " << j;
-			p.diskIn(j);               // считать с диска
-			p.showData();              // вывести данные
+			cout << "\nРџРµСЂСЃРѕРЅР° " << j;
+			p.diskIn(j);               // СЃС‡РёС‚Р°С‚СЊ СЃ РґРёСЃРєР°
+			p.showData();              // РІС‹РІРµСЃС‚Рё РґР°РЅРЅС‹Рµ
 		}
 		cout << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Файловый ввод/вывод объектов employee | Поддержка объектов неодинаковых размеров
+	#pragma region Р¤Р°Р№Р»РѕРІС‹Р№ РІРІРѕРґ/РІС‹РІРѕРґ РѕР±СЉРµРєС‚РѕРІ employee | РџРѕРґРґРµСЂР¶РєР° РѕР±СЉРµРєС‚РѕРІ РЅРµРѕРґРёРЅР°РєРѕРІС‹С… СЂР°Р·РјРµСЂРѕРІ
 		/*
 		char ch;
 		while (true)
 		{
-			cout << "'a' – добавление сведений о работнике"
-					"\n'd' - вывести сведения обо всех работниках"
-					"\n'w' – записать все данные в файл"
-					"\n'r' – прочитать все данные из файла"
-					"\n'x' - выход"
-					"\nВаш выбор: ";
+			cout << "'a' вЂ“ РґРѕР±Р°РІР»РµРЅРёРµ СЃРІРµРґРµРЅРёР№ Рѕ СЂР°Р±РѕС‚РЅРёРєРµ"
+					"\n'd' - РІС‹РІРµСЃС‚Рё СЃРІРµРґРµРЅРёСЏ РѕР±Рѕ РІСЃРµС… СЂР°Р±РѕС‚РЅРёРєР°С…"
+					"\n'w' вЂ“ Р·Р°РїРёСЃР°С‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р»"
+					"\n'r' вЂ“ РїСЂРѕС‡РёС‚Р°С‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°"
+					"\n'x' - РІС‹С…РѕРґ"
+					"\nР’Р°С€ РІС‹Р±РѕСЂ: ";
 			cin >> ch;
 			switch (ch)
 			{
-			case 'a':           // добавить работника
+			case 'a':           // РґРѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚РЅРёРєР°
 				employee::add(); break;
-			case 'd':           // вывести все сведения
+			case 'd':           // РІС‹РІРµСЃС‚Рё РІСЃРµ СЃРІРµРґРµРЅРёСЏ
 				employee::display(); break;
-			case 'w':           // запись в файл
+			case 'w':           // Р·Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 				employee::write(); break;
-			case 'r':           // чтение всех данных из файла
+			case 'r':           // С‡С‚РµРЅРёРµ РІСЃРµС… РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 				employee::read(); break;
-			case 'x': exit(0);  // выход
-			default: cout << "\nНеизвестная команда";
+			case 'x': exit(0);  // РІС‹С…РѕРґ
+			default: cout << "\nРќРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјР°РЅРґР°";
 			}  
 		}  
 		*/
 	#pragma endregion
 
-	#pragma region Перегрузка << >>
+	#pragma region РџРµСЂРµРіСЂСѓР·РєР° << >>
 		/*
 		Distance dist1, dist2;     
 		Distance dist3(11, 6.25);  
-		cout << "\nВведите два значения расстояний:";
+		cout << "\nР’РІРµРґРёС‚Рµ РґРІР° Р·РЅР°С‡РµРЅРёСЏ СЂР°СЃСЃС‚РѕСЏРЅРёР№:";
 		cin >> dist1 >> dist2;    
 		cout << "\ndist1 = " << dist1 << "\ndist2 = " << dist2;
 		cout << "\ndist3 = " << dist3 << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Перегрузка операции << и >> с файлами
+	#pragma region РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С†РёРё << Рё >> СЃ С„Р°Р№Р»Р°РјРё
 		/*
 		char ch;
 		Distance dist1;
-		ofstream ofile;         // создать и открыть
-		ofile.open("DIST.DAT"); // выходной поток
+		ofstream ofile;         // СЃРѕР·РґР°С‚СЊ Рё РѕС‚РєСЂС‹С‚СЊ
+		ofile.open("DIST.DAT"); // РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		
 		do {
-			cout << "\nВведите расстояние: ";
-			cin >> dist1;         // получить данные от пользователя
-			ofile << dist1;       // записать их в выходной поток
-			cout << "Продолжать (y/n)? ";
+			cout << "\nР’РІРµРґРёС‚Рµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ: ";
+			cin >> dist1;         // РїРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+			ofile << dist1;       // Р·Р°РїРёСЃР°С‚СЊ РёС… РІ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
+			cout << "РџСЂРѕРґРѕР»Р¶Р°С‚СЊ (y/n)? ";
 			cin >> ch;
 		} while (ch != 'n');
-		ofile.close();          // закрыть выходной поток
+		ofile.close();          // Р·Р°РєСЂС‹С‚СЊ РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		
-		ifstream ifile;         // создать и открыть 
-		ifile.open("DIST.DAT"); // входной поток
+		ifstream ifile;         // СЃРѕР·РґР°С‚СЊ Рё РѕС‚РєСЂС‹С‚СЊ 
+		ifile.open("DIST.DAT"); // РІС…РѕРґРЅРѕР№ РїРѕС‚РѕРє
 		
-		cout << "\nСодержимое файла:\n";
+		cout << "\nРЎРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р°:\n";
 		while (true)
 		{
-			ifile >> dist1;       // чтение данных из потока
-			if (ifile.eof())     // выход по EOF
+			ifile >> dist1;       // С‡С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· РїРѕС‚РѕРєР°
+			if (ifile.eof())     // РІС‹С…РѕРґ РїРѕ EOF
 				break;
-			cout << "Расстояние = " << dist1 << endl; //вывод
-													  // расстояний
+			cout << "Р Р°СЃСЃС‚РѕСЏРЅРёРµ = " << dist1 << endl; //РІС‹РІРѕРґ
+													  // СЂР°СЃСЃС‚РѕСЏРЅРёР№
 		}
 		*/
 	#pragma endregion
@@ -661,28 +661,28 @@ int main()
 	#pragma region Verylong
 		/*
 		unsigned long numb, j;
-		verylong fact = 1;       //инициализировать verylong
+		verylong fact = 1;       //РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ verylong
 		
-		cout << "\n\nВведите число: ";
-		cin >> numb;           //ввод числа типа long int
+		cout << "\n\nР’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ: ";
+		cin >> numb;           //РІРІРѕРґ С‡РёСЃР»Р° С‚РёРїР° long int
 		
 		for (j = numb; j>0; j--)  
 		fact = fact * j;     
-		cout << "Факториал= "; 
-		fact.putvl();          //вывести значение факториала
+		cout << "Р¤Р°РєС‚РѕСЂРёР°Р»= "; 
+		fact.putvl();          //РІС‹РІРµСЃС‚Рё Р·РЅР°С‡РµРЅРёРµ С„Р°РєС‚РѕСЂРёР°Р»Р°
 		cout << endl;
 		*/
 	#pragma endregion
 
-	#pragma region Лифты
+	#pragma region Р›РёС„С‚С‹
 		/*
 		building theBuilding;
 		while (true)
 		{
-			theBuilding.master_tick(); //послать временные метки
-									   //всем лифтам
-			wait(1000);                //пауза
-									   //получить запросы этажей от пользователей
+			theBuilding.master_tick(); //РїРѕСЃР»Р°С‚СЊ РІСЂРµРјРµРЅРЅС‹Рµ РјРµС‚РєРё
+									   //РІСЃРµРј Р»РёС„С‚Р°Рј
+			wait(1000);                //РїР°СѓР·Р°
+									   //РїРѕР»СѓС‡РёС‚СЊ Р·Р°РїСЂРѕСЃС‹ СЌС‚Р°Р¶РµР№ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 			theBuilding.record_floor_reqs();
 		}
 		*/
