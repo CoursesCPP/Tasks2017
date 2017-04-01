@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  Arrays.cpp
+d:\courses\beginner\lectprog\arrays\arrays\arrays.cpp(20): warning C4018: '<': signed/unsigned mismatch
+d:\courses\beginner\lectprog\arrays\arrays\arrays.cpp(38): warning C4018: '<': signed/unsigned mismatch
+d:\courses\beginner\lectprog\arrays\arrays\arrays.cpp(47): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Arrays.vcxproj -> D:\courses\Beginner\Lectprog\Arrays\Debug\Arrays.exe
